@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { requestMessage, verifySignature } from "../../api/auth";
+import { getNotification } from "../../api/notification";
+import NotificationList from "../notification";
 
 import jwt_decode from "jwt-decode";
 
@@ -38,6 +40,17 @@ const NavBar = () => {
   const { disconnectAsync } = useDisconnect();
   const { isConnected, address } = useAccount();
   const { signMessageAsync } = useSignMessage();
+  const [notifications, setNotifications] = useState([]);
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const getNotifications = async () => {
+    const notifications = await getNotification();
+    setNotifications(notifications);
+  }
+
+  const toggleNotifications = () => {
+    setShowNotifications(!showNotifications);
+  };
 
   const { chain } = useNetwork();
 
@@ -334,6 +347,12 @@ const NavBar = () => {
                         Explore
                       </span>
                     </Link>
+                    <img src={"notification.svg"}
+                      onClick={() => {
+                        getNotifications();
+                        toggleNotifications();
+                      }} alt="notification" height={"30px"} width={"30px"} className="cursor-pointer" />
+                        {showNotifications  && <NotificationList notifications={notifications} toggleNotifications={toggleNotifications} getNotifications={getNotifications} />}
                     <span
                       onClick={() => signOut()}
                       href="/dao-login"

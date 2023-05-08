@@ -34,7 +34,8 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
 
   return (
     <div
-      className="w-full bg-white rounded-lg shadow-md cursor-pointer"
+      className="border border-white border-opacity-25 bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 shadow-md rounded-lg backdrop-blur-lg overflow-hidden transition-all duration-500"
+      // className="m-0 font-sans antialiased bg-gray-900 text-gray-100 select-none"
       style={{
         maxWidth: "250px",
       }}
@@ -50,6 +51,8 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
           height={500}
           style={{
             height: 200,
+            padding:"12px",
+            borderRadius:"1rem"
           }}
           onClick={() =>
             router.push({
@@ -68,22 +71,22 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
           alt="product image"
           width={20}
           height={20}
+          style={{
+            height: 20,
+          }}
         />
         <div className="flex-col">
-          <p className="font-bold text-md hover:underline cursor-pointer">
+          <p className="font-bold text-gray-300 cursor-pointer">
             {gig?.freelancer?.name}
           </p>
           {gig?.freelancer?.isTopRated && (
-            <p className="text-blue-800 text-xs">Top Rated Seller</p>
+            <p class="text-gray-300 text-xs font-medium">Top Rated Seller</p>
           )}
         </div>
       </div>
       <div className="px-5 pb-5">
         <h5
-          className={
-            "text-sm my-4 font-normal tracking-tight text-gray-900 " +
-            colorChangeClass
-          }
+          class="my-2 text-white font-semibold hover:underline cursor-pointer"
           onClick={() => {
             router.push({
               pathname: "/gig-detail",
@@ -93,6 +96,7 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
         >
           {gig?.title}
         </h5>
+
 
         <div className="flex items-center mt-2.5 mb-5">
           <svg
@@ -114,7 +118,7 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
           </span>
         </div>
         <div className="flex items-center justify-between">
-          {/* <div className="flex space-x-1">
+          <div className="flex space-x-1">
             <div className="bg-white border-2 rounded-full flex items-center space-x-2 px-4 cursor-pointer h-12 justify-center hover:bg-gray-200">
               <img
                 src="https://img.icons8.com/material-outlined/344/facebook-like--v1.png"
@@ -129,8 +133,8 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
                 className="h-4 w-4" //https://img.icons8.com/material-rounded/344/dislike.png
               />
             </div>
-          </div> */}
-          <span className="text-xl font-bold text-gray-900 ">
+          </div>
+          <span className="text-xl font-bold text-white ">
             ${gig?.plans?.length > 0 ? gig?.plans[0]?.price : <></>}
           </span>
         </div>
