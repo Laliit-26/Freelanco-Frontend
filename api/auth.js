@@ -47,7 +47,7 @@ export const getProfile = () => {
     axiosInstance
       .get("/profile")
       .then((res) => {
-        resolve(res);
+        resolve(res.data);
       })
       .catch((err) => reject(err));
   });

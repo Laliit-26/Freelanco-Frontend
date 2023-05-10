@@ -1,15 +1,12 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useState, useContext } from "react";
-import loadingGif from "../public/walk.gif";
+import React, { useState } from "react";
 import { useForm, useWatch, useFieldArray } from "react-hook-form";
 import axiosInstance from "../axios";
 import { addFreelancer } from "../api/freelancer";
 import { emailVerify } from "../api/auth";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
-import { useAccount, useConnect, useSignMessage, useDisconnect } from "wagmi";
-import { InjectedConnector } from "wagmi/connectors/injected";
 import { default as ReactSelect } from "react-select";
 import { components } from "react-select";
 import TxBox from "../components/Validation/TxBox";
@@ -20,7 +17,6 @@ import { uploadImage } from "../api/ipfs";
 const CreateFreelancerPage = () => {
   const { user, setUser, setToken } = useAuth();
 
-  // const user_id = 2;
 
   const { categories } = useGigs();
 
@@ -48,19 +44,8 @@ const CreateFreelancerPage = () => {
 
   const router = useRouter();
 
-  const [isShortTermSelected, setIsShortTermSelected] = useState(false);
-  const [title, setTitle] = useState("");
-  const [skillsChosen, setSkillsChosen] = useState([]);
-  const [isHourlySelected, setIsHourlySelected] = useState(false);
-  const [price, setPrice] = useState(null);
-  const [jd, setJd] = useState("");
-  // const [skills, setSkills] = useState(["C++", "Python", "Tailwind", "AI/ML"]);
+
   const [counter, setCounter] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const { connectAsync } = useConnect();
-  const { disconnectAsync } = useDisconnect();
-  const { isConnected } = useAccount();
-  const { signMessageAsync } = useSignMessage();
   const [validationErrors, setValidationErrors] = useState("");
   const [imageUploaded, setImageUploaded] = useState(null);
   const [showTxDialog, setShowTxDialog] = useState(false);
@@ -102,22 +87,6 @@ const CreateFreelancerPage = () => {
     });
   }
 
-
-  const setShortTerm = () => {
-    setIsShortTermSelected(true);
-  };
-
-  const setLongTerm = () => {
-    setIsShortTermSelected(false);
-  };
-
-  const setHourly = () => {
-    setIsHourlySelected(true);
-  };
-
-  const setProjectBase = () => {
-    setIsHourlySelected(false);
-  };
 
 
 
@@ -178,22 +147,11 @@ const CreateFreelancerPage = () => {
       setIsLoading(true);
       const userData = { ...data, wallet_address: user?.wallet_address };
       const result = await addFreelancer(userData);
-      // router.push("/seller");
-      console.log("freelancer", result);
-      // const token = result.token;
-      // localStorage.setItem("token", result.token);
-      // setToken(result.token);
-
-      try {
-        // const decodedToken = jwt_decode(result.token);
-        // console.log(decodedToken);
-        setUser(result.freelancer);
-        // console.log(user);
-
-        router.push("/seller");
-      } catch (error) {
-        console.log(error.message);
-      }
+      router.push("/seller");
+      const token = result.token;
+      localStorage.setItem("token", token);
+      setToken(token);
+      setUser(result.freelancer);
     } catch (err) {
       console.log(err);
     }
@@ -216,16 +174,16 @@ const CreateFreelancerPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-120px)] mt-20">
+    <div className="flex justify-center items-center min-h-[calc(100vh-120px)] mt-20  bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 h-screen  ">
       <TxBox
         show={showTxDialog}
         cancel={setShowTxDialog}
         txMessage={txMessage}
       // routeToPush={"/client-profile"}
       />
-      <div className="h-3/4 w-[calc(70vw)] border-2 border-gray-200 shadow-lg">
+      <div className="h-3/4 w-[calc(70vw)] shadow-lg   bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 shadow-md rounded-lg backdrop-blur-lg transition-all duration-500 text-white" style={{ boxShadow: '6px 10px 37px 8px rgba(0,0,0,0.75)' }}>
         <div className="h-16 w-full flex justify-start items-center border-b pl-8">
-          <span className="font-light font-serif text-2xl">
+          <span className="font-serif text-2xl">
             Getting Started
           </span>
         </div>
@@ -247,7 +205,7 @@ const CreateFreelancerPage = () => {
                   >
                     <label
                       htmlFor="name"
-                      className="text-sm font-semibold text-gray-500"
+                      className="text-sm font-semibold text-gray-300"
                     >
                       Full Name
                     </label>
@@ -262,7 +220,7 @@ const CreateFreelancerPage = () => {
                     )}
                     <label
                       htmlFor="email"
-                      className="text-sm font-semibold text-gray-500"
+                      className="text-sm font-semibold text-gray-300"
                     >
                       Email
                     </label>
@@ -278,14 +236,14 @@ const CreateFreelancerPage = () => {
 
                     <label
                       htmlFor="category"
-                      className="text-sm font-semibold text-gray-500"
+                      className="text-sm font-semibold text-gray-300"
                     >
                       Category
                     </label>
                     <select
                       name="category"
                       {...register("category")}
-                      className="bg-transparent my-2 py-2 border-transparent rounded-lg px-2 font-light w-full focus:border-transparent active:border-transparent focus-visible:border-transparent"
+                      className=" bg-gray-900 text-gray-100 my-2 py-2 border-transparent rounded-lg px-2 font-light w-full focus:border-transparent active:border-transparent focus-visible:border-transparent"
                       value={data.category}
                       onChange={(e) => {
                         setValue("category", e.target.value);
@@ -299,6 +257,7 @@ const CreateFreelancerPage = () => {
                           </option>
                         ))}
                     </select>
+
                     {validationErrors.category && (
                       <span className="text-red-500">{validationErrors.category}</span>
                     )}
@@ -308,7 +267,7 @@ const CreateFreelancerPage = () => {
                 <div className="flex-col w-full">
                   <label
                     htmlFor="profilePic"
-                    className="text-sm font-semibold text-gray-500 ml-4 -mb-10"
+                    className="text-sm font-semibold text-gray-300 ml-4 -mb-10"
                   >
                     Profile Picture
                   </label>
@@ -375,11 +334,7 @@ const CreateFreelancerPage = () => {
               </div>
               <div className="flex w-full mt-5 justify-end items-end">
                 <button
-                  // disabled={user?.metamask_verified}
                   className="bg-blue-300 p-4 shadow-sm rounded-3xl text-md text-white px-8"
-                  // onClick={() => {
-                  // setCounter((prevState) => prevState + 1);
-                  // }}
                   onClick={handleValidation}
                 >
                   Continue
@@ -393,9 +348,7 @@ const CreateFreelancerPage = () => {
               <input
                 type="text"
                 {...register("occupation")}
-                // value={title}
-                // onChange={(e) => setTitle(e.target.value)}
-                className="placeholder:italic placeholder:text-slate-400 block bg-white w-1/2 h-16 border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                className="mr-2 w-2/3 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 name="occupation"
               />
               {validationErrors.occupation && (
@@ -443,36 +396,6 @@ const CreateFreelancerPage = () => {
                   <img src="loading.svg" height={50} width={50} />
                 </div> : <>
                   <label className="block font-bold text-xl mb-2">Skills:</label>
-                  {/* {fields.map((item, index) => (
-        <div key={item.id} className="flex  mb-2">
-          <select
-            name={`skills[${index}].name`}
-            ref={register()}
-            className="border px-2 py-1 rounded-sm"
-          >
-            {skills.map((skill) => (
-              <option key={skill.id} value={skill.name}>
-                {skill.name}
-              </option>
-            ))}
-          </select>
-          <button
-            type="button"
-            onClick={() => remove(index)}
-            className="ml-2 py-1 px-2 rounded-sm bg-red-500 text-white"
-          >
-            Remove
-          </button>
-        </div>
-      ))}
-      <button
-        type="button"
-        onClick={() => append({ name: '' })}
-        className="py-1 px-2 rounded-sm bg-green-500 text-white"
-      >
-        Add Skill
-      </button> */}
-
                   <ReactSelect
                     options={skillOptions}
                     isMulti
@@ -485,59 +408,27 @@ const CreateFreelancerPage = () => {
                     allowSelectAll={true}
                     value={skill.optionSelected}
                     className="block w-full bg-gray-200 text-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    styles={{
+                      control: (provided, state) => ({
+                        ...provided,
+                        backgroundColor: "black",
+                        color: "white",
+                        overflow: "auto"
+                      }),
+                      option: (provided, state) => ({
+                        ...provided,
+                        backgroundColor: "black",
+                        color: "white",
+
+                      }),
+                    }}
                   />
+
+
                   {validationErrors.skill && (
                     <span className="text-red-500">{validationErrors.skill}</span>
                   )}
 
-                  {/* <div className="flex flex-wrap">
-                {skills.map((skill, idx) => {
-                  return (
-                    <div
-                      className={
-                        skillsChosen.includes(idx)
-                          ? "border p-4 flex items-center justify-center space-x-5 m-2 bg-gray-100 cursor-pointer transition delay-100"
-                          : "border p-4 flex items-center justify-center space-x-5 m-2 hover:bg-gray-100 cursor-pointer transition delay-100"
-                      }
-                      key={idx}
-                      onClick={() => {
-                        if (skillsChosen.includes(idx)) {
-                          setSkillsChosen((prevSkills) =>
-                            [...prevSkills].filter((skill) => skill !== idx)
-                          );
-                          remove(skill);
-                        } else {
-                          if (skillsChosen.length < 3) {
-                            setSkillsChosen((prevSkills) => [
-                              ...prevSkills,
-                              idx,
-                            ]);
-                            append(skill);
-                          }
-                        }
-                      }}
-                    >
-                      <span>{skill}</span>
-                      {skillsChosen.includes(idx) ? (
-                        <img
-                          src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/344/external-tick-interface-royyan-wijaya-detailed-outline-royyan-wijaya.png"
-                          className="w-5 h-5"
-                          alt=""
-                        />
-                      ) : (
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/748/748113.png"
-                          className="w-4 h-4"
-                          alt=""
-                          style={{
-                            filter: "brightness(0) invert(0)",
-                          }}
-                        />
-                      )}
-                    </div>
-                  );
-                })}
-              </div> */}
 
                   <div className="flex w-full h-24 justify-end items-end">
                     <button

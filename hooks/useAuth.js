@@ -3,6 +3,7 @@ import axios from "axios";
 import { getProfile, getProposalsOfClient } from "../api/auth";
 import jwt_decode from "jwt-decode";
 import { socket, connectSocket } from "../socket";
+import { useRouter } from "next/router";
 const {
   contractAddresses,
   Gig_abi,
@@ -53,6 +54,7 @@ export const AuthProvider = ({ children }) => {
   const [searchedGigs, setSearchedGigs] = useState([]);
   const [newMessageCount, setNewMessageCount] = useState(new Set());
   const [isWrongNetwork, setIsWrongNetwork] = useState(undefined);
+  const router = useRouter();
   const { chain } = useNetwork();
   const { data: signers, isError, isLoading } = useSigner()
 

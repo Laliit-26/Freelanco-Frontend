@@ -58,9 +58,9 @@ const GigsListing = () => {
       </div>
       <div className="px-20 transition ease-in-out delay-80 ">
         <div className="flex  flex-wrap gap-x-8 gap-y-6 mt-5 pb-20">
-          {isLoading && user ? (
+          {isLoading ? (
             // Display the loading component while data is being fetched
-            <img src="loading.svg" height={50} width={50} />
+            <img src="loading.gif" height={50} width={50} />
           ) : typeof searchedGigs == "object" && searchedGigs.length == 0 ? (
             mostPopular.length > 0 ? (
               mostPopular.map((gig) => (

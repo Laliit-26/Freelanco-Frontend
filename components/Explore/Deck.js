@@ -7,8 +7,6 @@ import Image from "next/image";
 export const CategoryCard = ({ category }) => {
   const router = useRouter();
 
-  console.log(category);
-
   const imageMapping = {
     GameFi: "/mid.png",
     DeFi: "/mid2.png",

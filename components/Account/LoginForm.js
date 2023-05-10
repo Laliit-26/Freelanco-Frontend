@@ -72,27 +72,18 @@ const LoginForm = ({ setWantsToLogin }) => {
       const verification_data = { message, signature };
       const result = await verifySignature(verification_data);
 
-      console.log(result.token);
-      //decrypt token and set user context
+      console.log(result, "result from signin ");
       const token = result.token;
       localStorage.setItem("token", token);
       router.push("/explore");
-      // const decodedToken = jwt.verify(
-      //   token,
-      //   "MyUltraSecurePassWordIWontForgetToChange",
-      //   { algorithms: ["HS256"] }
-      // );
-      const decodedToken = jwt_decode(token);
-      console.log(decodedToken);
-
       setIsLoggedIn(true);
       setToken(result.token);
-      setUser(decodedToken.data.user);
+      setUser(result.user);
       setValues();
       setShowTxDialog(false);
-      // router.push("/explore");
     } catch (e) {
       setShowErrorDialog(true);
+      setIsLoading(false);
       setErrorMessage("You are not a member");
       if (e.toString().includes("rejected")) {
         setErrorMessage("User declined the action");
@@ -118,7 +109,7 @@ const LoginForm = ({ setWantsToLogin }) => {
         show={showTxDialog}
         cancel={setShowTxDialog}
         txMessage={txMessage}
-        // routeToPush={"/client-profile"}
+      // routeToPush={"/client-profile"}
       />
       <h1 className="text-7xl font-black text-white">Log in</h1>
       <p className="mt-2 text-gray-400 text-sm font-light">
@@ -145,9 +136,9 @@ const LoginForm = ({ setWantsToLogin }) => {
               {isLoading ? (
                 <div className="flex w-3/4justify-end mt-5 mx-5">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif"
-                    height={50}
-                    width={50}
+                    src="loading.gif"
+                    height={80}
+                    width={80}
                   />
                 </div>
               ) : (

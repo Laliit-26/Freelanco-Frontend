@@ -292,7 +292,7 @@ const CreateFreelancerPage = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-120px)] mt-20">
+    <div className="flex justify-center items-center min-h-[calc(100vh-120px)]  bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 h-screen  ">
       <ErrorBox
         show={showErrorDialog}
         cancel={setShowErrorDialog}
@@ -304,7 +304,7 @@ const CreateFreelancerPage = () => {
         txMessage={txMessage}
       // routeToPush={"/client-profile"}
       />
-      <div className="h-3/4 w-[calc(70vw)] border-2 border-gray-200 shadow-lg">
+      <div className="mt-20 w-[calc(70vw)] shadow-lg   bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 shadow-md rounded-lg backdrop-blur-lg transition-all duration-500 text-white" style={{ boxShadow: '6px 10px 37px 8px rgba(0,0,0,0.75)' }}>
         <div className="h-16 w-full flex justify-start items-center border-b pl-8">
           <span className="font-light font-serif text-2xl">
             Create your Gig

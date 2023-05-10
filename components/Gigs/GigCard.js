@@ -34,7 +34,7 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
 
   return (
     <div
-      className="border border-white border-opacity-25 bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 shadow-md rounded-lg backdrop-blur-lg overflow-hidden transition-all duration-500"
+      className="border border-white border-opacity-25 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 shadow-md rounded-lg backdrop-blur-lg overflow-hidden transition-all duration-500"
       // className="m-0 font-sans antialiased bg-gray-900 text-gray-100 select-none"
       style={{
         maxWidth: "250px",
@@ -86,7 +86,7 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
       </div>
       <div className="px-5 pb-5">
         <h5
-          class="my-2 text-white font-semibold hover:underline cursor-pointer"
+          class="my-2 h-14 text-white font-semibold hover:underline cursor-pointer"
           onClick={() => {
             router.push({
               pathname: "/gig-detail",
@@ -119,14 +119,14 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
         </div>
         <div className="flex items-center justify-between">
           <div className="flex space-x-1">
-            <div className="bg-white border-2 rounded-full flex items-center space-x-2 px-4 cursor-pointer h-12 justify-center hover:bg-gray-200">
+            <div className="bg-white border-2 rounded-full flex items-center space-x-1 px-2 cursor-pointer h-6 justify-center hover:bg-gray-200">
               <img
                 src="https://img.icons8.com/material-outlined/344/facebook-like--v1.png"
                 alt=""
                 className="h-4 w-4" //https://img.icons8.com/material-rounded/344/dislike.png
               />
             </div>
-            <div className="bg-white border-2 rounded-full flex items-center space-x-2 px-4 cursor-pointer h-12 justify-center hover:bg-gray-200">
+            <div className="bg-white border-2 rounded-full flex items-center space-x-2 px-2 cursor-pointer h-6 justify-center hover:bg-gray-200">
               <img
                 src="https://img.icons8.com/material-rounded/344/dislike.png"
                 alt=""
