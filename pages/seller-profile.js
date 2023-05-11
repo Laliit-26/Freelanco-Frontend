@@ -8,12 +8,26 @@ const FreelancerDetails = ({ freelancer }) => {
   const allowEdit = true;
 
   return (
-    <div className="flex mx-20 space-x-8 mt-20">
+    <div
+      className="flex px-20 space-x-8 pt-20 text-white blur-bg"
+      style={{
+        backgroundImage: `url('/ff.jpeg')`,
+        "backdrop-filter": "blur(10px)",
+      }}
+    >
       <div className="flex-3/4 w-1/4">
-        <FreelancerProfile allowEdit={allowEdit} freelancerUser={freelancerUser} setFreelancerUser={setFreelancerUser} />
+        <FreelancerProfile
+          allowEdit={allowEdit}
+          freelancerUser={freelancerUser}
+          setFreelancerUser={setFreelancerUser}
+        />
       </div>
       <div className="flex-1/4 w-3/4">
-        <SellerDetails allowEdit={allowEdit} freelancerUser={freelancerUser} setFreelancerUser={setFreelancerUser} />
+        <SellerDetails
+          allowEdit={allowEdit}
+          freelancerUser={freelancerUser}
+          setFreelancerUser={setFreelancerUser}
+        />
       </div>
     </div>
   );

@@ -119,19 +119,19 @@ const EditModal = ({
   };
 
   return (
-    <div tabindex="-1" class="absoluteCenter bg-white opacity-80 z-50">
+    <div tabindex="-1" class="absoluteCenter bg-gray-900 opacity-80 z-50">
       <div class="relative">
         <div class="relative rounded-lg shadow border-blue-100 border-2 px-10 py-20">
           {editFieldName == "name" && (
             <form>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 Your Name
               </label>
 
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="bg-gray-50 text-gray-900 text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
+                className="bg-gray-50 text-white text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
               />
               <p
                 id="helper-text-explanation"
@@ -153,6 +153,7 @@ const EditModal = ({
               <h1 className="self-start text-2xl font-extrabold pl-1 my-5">
                 Add Skills
               </h1>
+
               <ReactSelect
                 options={skillOptions}
                 isMulti
@@ -202,27 +203,27 @@ const EditModal = ({
               <h1 className="self-start text-2xl font-extrabold pl-1 my-5">
                 Add Experience
               </h1>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 Role
               </label>
               <input
                 required
-                className="bg-gray-50 text-gray-900 text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
+                className="bg-gray-50 text-white text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
                 name="role"
                 value={experience.role}
                 onChange={handleExperienceChange}
               />
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 Company
               </label>
               <input
                 required
-                className="bg-gray-50 text-gray-900 text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
+                className="bg-gray-50 text-white text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
                 name="company"
                 value={experience.company}
                 onChange={handleExperienceChange}
               />
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 Start date
               </label>
               <div className="flex justify-between w-full items-center">
@@ -236,7 +237,7 @@ const EditModal = ({
                   />
                 </div>
               </div>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 End date
               </label>
               <div className="flex justify-between w-full items-center">
@@ -275,16 +276,16 @@ const EditModal = ({
                   </option>
                 ))}
               </select>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 College Name
               </label>
               <input
-                className="bg-gray-50 text-gray-900 text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
+                className="bg-gray-50 text-white text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
                 name="collegeName"
                 value={education.collegeName}
                 onChange={handleEducationChange}
               />
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 Start date
               </label>
               <div className="flex justify-between w-full items-center">
@@ -297,7 +298,7 @@ const EditModal = ({
                   />
                 </div>
               </div>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 End date
               </label>
               <div className="flex justify-between w-full items-center">
@@ -317,43 +318,43 @@ const EditModal = ({
               <h1 className="self-start text-2xl font-extrabold pl-1 my-5">
                 Add Project
               </h1>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 Title
               </label>
               <input
                 name="title"
                 value={projects.title}
                 onChange={handleProjectChange}
-                className="bg-gray-50 text-gray-900 text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
+                className="bg-gray-50 text-white text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
               />
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 description
               </label>
               <input
                 name="description"
                 value={projects.description}
                 onChange={handleProjectChange}
-                className="bg-gray-50 text-gray-900 text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
+                className="bg-gray-50 text-white text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
               />
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 Github URL
               </label>
               <input
                 name="githubURL"
                 value={projects.githubURL}
                 onChange={handleProjectChange}
-                className="bg-gray-50 text-gray-900 text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
+                className="bg-gray-50 text-white text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
               />
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 Live URL
               </label>
               <input
                 name="liveURL"
                 value={projects.liveURL}
                 onChange={handleProjectChange}
-                className="bg-gray-50 text-gray-900 text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
+                className="bg-gray-50 text-white text-sm rounded-lg w-full p-2.5 border-blue-100 border-2"
               />
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 Start date
               </label>
               <div className="flex justify-between w-full items-center">
@@ -366,7 +367,7 @@ const EditModal = ({
                   />
                 </div>
               </div>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
+              <label className="block mb-2 text-sm font-medium text-white">
                 End date
               </label>
               <div className="flex justify-between w-full items-center">

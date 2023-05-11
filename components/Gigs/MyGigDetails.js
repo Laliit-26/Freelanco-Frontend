@@ -25,7 +25,7 @@ const MyGigDetails = ({ gig }) => {
 
   return (
     <>
-      <div className="flex justify-between p-8">
+      <div className="flex justify-between p-8 text-white">
         <div className="flex flex-col w-[20vw]">
           <div className="flex space-x-6 justify-start items-center">
             <div className="font-bold hover:underline text-3xl">

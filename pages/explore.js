@@ -56,8 +56,11 @@ const GigsListing = () => {
           <></>
         )}
       </div>
-      <div className="px-20 transition ease-in-out delay-80 ">
-        <div className="flex  flex-wrap gap-x-8 gap-y-6 mt-5 pb-20">
+      <div className="transition ease-in-out delay-80 ">
+        <div className="mt-10 w-full mr-5 flex flex-col">
+          <p className="text-white font-bold text-5xl pl-20 my-2">Trending</p>
+        </div>
+        <div className="flex  flex-wrap gap-x-8 gap-y-6 mt-5 pb-20 px-20">
           {isLoading ? (
             // Display the loading component while data is being fetched
             <img src="loading.gif" height={50} width={50} />

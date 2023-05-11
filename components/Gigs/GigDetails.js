@@ -60,7 +60,7 @@ const GigDetails = ({ gig }) => {
   // }, [gig]);
 
   return (
-    <div className="min-h-[calc(70vh)] ">
+    <div className="min-h-[calc(70vh)] text-white">
       <div className="flex justify-between p-8">
         <div className="flex flex-col">
           <div className="flex space-x-6 justify-start items-center">
@@ -92,7 +92,7 @@ const GigDetails = ({ gig }) => {
       <div className="w-full pl-8">
         {gig?.awsImageLink && (
           <Image
-            className="rounded-3xl w-full h-[60vh]"
+            className="rounded-3xl w-full h-[60vh] gig-image"
             src={gig?.awsImageLink}
             alt="product image"
             height={500}
@@ -120,7 +120,7 @@ const GigDetails = ({ gig }) => {
             gig?.reviews?.map((review) => (
               <>
                 <div className="w-full my-2">
-                  <div className="h-32 border text-center flex items-center justify-center">
+                  <div className="h-32 border border-blue-400 text-center flex items-center justify-center">
                     <p className="font-light text-xs text-blue-800 p-4">
                       {" "}
                       {review?.comment}
@@ -168,7 +168,7 @@ const GigDetails = ({ gig }) => {
                   </p>
 
                   <p
-                    className="text-md font-bold p-8 text-blue-800 hover:underline cursor-pointer"
+                    className="text-md font-bold p-8 text-blue-400 hover:underline cursor-pointer"
                     onClick={() => setShowReviews(true)}
                   >
                     See all reviews
@@ -177,8 +177,8 @@ const GigDetails = ({ gig }) => {
               </div>
 
               <div className="w-full pl-8">
-                <div className="h-32 border text-center flex items-center justify-center">
-                  <p className="font-light text-xs text-blue-800 p-4">
+                <div className="h-32 border border-blue-400 text-center flex items-center justify-center">
+                  <p className="font-light text-xs text-blue-400 p-4">
                     {" "}
                     {gig?.reviews?.length > 0
                       ? gig?.reviews?.[0].comment
@@ -214,7 +214,9 @@ const GigDetails = ({ gig }) => {
               </div>
             </>
           )}
-          <p className="font-bold pl-8 mt-8">About The Gig</p>
+          <p className="font-bold pl-8 mt-8 text-blue-400 underline">
+            About The Gig
+          </p>
           <div className="w-full">
             <p className="text-sm p-8">{gig?.description?.slice(0, 830)}</p>
           </div>
@@ -229,7 +231,7 @@ const GigDetails = ({ gig }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-bold">
+                  <span className="font-bold text-blue-400">
                     {gig?.duration === "short"
                       ? "Less than 30 hrs/week"
                       : "More than 30 hrs/week"}
@@ -246,7 +248,7 @@ const GigDetails = ({ gig }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-bold">
+                  <span className="font-bold text-blue-400">
                     {gig?.duration === "short"
                       ? "1 to 3 months"
                       : "More than 3 months"}
@@ -263,7 +265,7 @@ const GigDetails = ({ gig }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-bold">
+                  <span className="font-bold text-blue-400">
                     {gig?.freelancer?.total_earned} MATIC
                   </span>
                   <span>Total Earned</span>
@@ -274,7 +276,9 @@ const GigDetails = ({ gig }) => {
           {!isMyGig && (
             <div className=" flex flex-col p-10 pl-6">
               <div className="flex-col space-x-1">
-                <p className="font-bold mb-4">About The Seller</p>
+                <p className="font-bold mb-4 text-blue-400 underline">
+                  About The Seller
+                </p>
 
                 <div className="flex justify-between">
                   <div className="flex p-4 rounded-lg my-2">
@@ -314,7 +318,7 @@ const GigDetails = ({ gig }) => {
                   <div className="flex justify-end items-center">
                     <span
                       className={
-                        "font-light border-2 px-3 py-1 rounded-md text-sm cursor-pointer p-5 border-blue-800 text-blue-800"
+                        "font-light border border-blue-400-2 px-3 py-1 rounded-md text-sm cursor-pointer p-5 border border-blue-400-blue-400 text-blue-400"
                       }
                       onClick={() =>
                         router.push({
@@ -330,7 +334,7 @@ const GigDetails = ({ gig }) => {
                     </span>
                   </div>
                 </div>
-                <div className="flex p-4 rounded-lg my-2 h-32 border">
+                <div className="flex p-4 rounded-lg my-2 h-32 border border-blue-400 border border-blue-400-blue-400">
                   <div className="flex justify-around w-full px-10 my-5">
                     <div className="flex flex-col items-center justify-center">
                       <span className="font-bold text-md">

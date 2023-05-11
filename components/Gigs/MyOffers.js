@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import ErrorBox from "../Validation/ErrorBox";
 import TxBox from "../Validation/TxBox";
-import { useSigner } from 'wagmi'
+import { useSigner } from "wagmi";
 
 const MyGigActions = ({ proposalsData }) => {
   const { user, freelancoContract } = useAuth();
@@ -19,7 +19,7 @@ const MyGigActions = ({ proposalsData }) => {
   const [showTxDialog, setShowTxDialog] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [txMessage, setTxMessage] = useState(undefined);
-  const { data: signer, isError, isLoading } = useSigner()
+  const { data: signer, isError, isLoading } = useSigner();
 
   console.log("PROPOSALS SENT: ", proposalsData);
 
@@ -113,7 +113,7 @@ const MyGigActions = ({ proposalsData }) => {
                     <div className="flex flex-col">
                       <Link
                         href={`/freelancer-profile/${proposal?._id}`}
-                      // to={`/freelancer-profile/6`}
+                        // to={`/freelancer-profile/6`}
                       >
                         <span className="font-bold text-md hover:underline cursor-pointer">
                           {proposal?.client_address}
@@ -371,7 +371,7 @@ const MyGigActions = ({ proposalsData }) => {
               filter: "grayscale(1)",
             }}
           />
-          <p className="text-center text-gray-800 font-bold">
+          <p className="text-center text-gray-100 font-bold">
             No proposals received
           </p>
         </div>

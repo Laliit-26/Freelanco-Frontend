@@ -6,7 +6,7 @@ import GigRating from "./GigRating";
 import MakeDispute from "./MakeDispute";
 import ErrorBox from "../Validation/ErrorBox";
 import TxBox from "../Validation/TxBox";
-import { useSigner } from 'wagmi'
+import { useSigner } from "wagmi";
 
 const MyOrders = ({ ordersData }) => {
   const { user, freelancoContract } = useAuth();
@@ -20,7 +20,7 @@ const MyOrders = ({ ordersData }) => {
   const [showTxDialog, setShowTxDialog] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [txMessage, setTxMessage] = useState(undefined);
-  const { data: signer, isError, isLoading } = useSigner()
+  const { data: signer, isError, isLoading } = useSigner();
 
   console.log("ORDERS: ,", ordersData);
 
@@ -406,7 +406,7 @@ const MyOrders = ({ ordersData }) => {
               filter: "grayscale(1)",
             }}
           />
-          <p className="text-center text-gray-800 font-bold">
+          <p className="text-center text-gray-100 font-bold">
             No orders ongoing
           </p>
         </div>

@@ -17,7 +17,6 @@ import { uploadImage } from "../api/ipfs";
 const CreateFreelancerPage = () => {
   const { user, setUser, setToken } = useAuth();
 
-
   const { categories } = useGigs();
 
   const {
@@ -41,9 +40,7 @@ const CreateFreelancerPage = () => {
   });
   console.log(data);
 
-
   const router = useRouter();
-
 
   const [counter, setCounter] = useState(0);
   const [validationErrors, setValidationErrors] = useState("");
@@ -51,7 +48,6 @@ const CreateFreelancerPage = () => {
   const [showTxDialog, setShowTxDialog] = useState(false);
   const [txMessage, setTxMessage] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
-
 
   const [skill, setSkill] = useState([]);
 
@@ -87,26 +83,23 @@ const CreateFreelancerPage = () => {
     });
   }
 
-
-
-
   function handleValidation() {
     const errors = {};
 
     if (!getValues("name")) {
-      errors.name = 'Name is required';
+      errors.name = "Name is required";
     }
 
     if (!getValues("email")) {
-      errors.email = 'Email is required';
+      errors.email = "Email is required";
     }
 
     if (!getValues("category")) {
-      errors.category = 'Category is required';
+      errors.category = "Category is required";
     }
 
     if (!getValues("ipfsImageHash")) {
-      errors.image = 'image is required';
+      errors.image = "image is required";
     }
 
     if (Object.keys(errors).length == 0 && counter == 0) {
@@ -116,10 +109,10 @@ const CreateFreelancerPage = () => {
     }
 
     if (!getValues("occupation")) {
-      errors.occupation = 'please mention your job role';
+      errors.occupation = "please mention your job role";
     }
     if (getValues("description")?.split(" ").length < 20) {
-      errors.description = 'write at least 20 words about you ';
+      errors.description = "write at least 20 words about you ";
     }
 
     console.log("errors", errors);
@@ -138,9 +131,7 @@ const CreateFreelancerPage = () => {
     }
 
     setValidationErrors(errors);
-
   }
-
 
   const updateUser = async () => {
     try {
@@ -174,18 +165,19 @@ const CreateFreelancerPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-120px)] mt-20  bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 h-screen  ">
+    <div className="flex justify-center items-center min-h-[calc(100vh-120px)] pt-20  bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900">
       <TxBox
         show={showTxDialog}
         cancel={setShowTxDialog}
         txMessage={txMessage}
-      // routeToPush={"/client-profile"}
+        // routeToPush={"/client-profile"}
       />
-      <div className="h-3/4 w-[calc(70vw)] shadow-lg   bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 shadow-md rounded-lg backdrop-blur-lg transition-all duration-500 text-white" style={{ boxShadow: '6px 10px 37px 8px rgba(0,0,0,0.75)' }}>
+      <div
+        className="h-3/4 w-[calc(70vw)] shadow-lg  bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 rounded-lg backdrop-blur-lg transition-all duration-500 text-white"
+        style={{ boxShadow: "6px 10px 37px 8px rgba(0,0,0,0.75)" }}
+      >
         <div className="h-16 w-full flex justify-start items-center border-b pl-8">
-          <span className="font-serif text-2xl">
-            Getting Started
-          </span>
+          <span className="font-serif text-2xl">Getting Started</span>
         </div>
         <div className="flex items-start justify-center p-8 flex-col">
           {counter === 0 && (
@@ -216,7 +208,9 @@ const CreateFreelancerPage = () => {
                       className="mr-2 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                     />
                     {validationErrors.name && (
-                      <span className="text-red-500">{validationErrors.name}</span>
+                      <span className="text-red-500">
+                        {validationErrors.name}
+                      </span>
                     )}
                     <label
                       htmlFor="email"
@@ -231,7 +225,9 @@ const CreateFreelancerPage = () => {
                       className="mr-2 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                     />
                     {validationErrors.email && (
-                      <span className="text-red-500">{validationErrors.email}</span>
+                      <span className="text-red-500">
+                        {validationErrors.email}
+                      </span>
                     )}
 
                     <label
@@ -259,7 +255,9 @@ const CreateFreelancerPage = () => {
                     </select>
 
                     {validationErrors.category && (
-                      <span className="text-red-500">{validationErrors.category}</span>
+                      <span className="text-red-500">
+                        {validationErrors.category}
+                      </span>
                     )}
                   </form>
                 </div>
@@ -325,7 +323,9 @@ const CreateFreelancerPage = () => {
                         </label>
                       </div>
                       {validationErrors.image && (
-                        <span className="text-red-500">{validationErrors.image}</span>
+                        <span className="text-red-500">
+                          {validationErrors.image}
+                        </span>
                       )}
                     </div>
                   )}
@@ -352,7 +352,9 @@ const CreateFreelancerPage = () => {
                 name="occupation"
               />
               {validationErrors.occupation && (
-                <span className="text-red-500">{validationErrors.occupation}</span>
+                <span className="text-red-500">
+                  {validationErrors.occupation}
+                </span>
               )}
               <label
                 htmlFor="description"
@@ -366,7 +368,9 @@ const CreateFreelancerPage = () => {
                 className="mr-2 w-2/3 h-32 placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 my-2 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
               />
               {validationErrors.description && (
-                <span className="text-red-500">{validationErrors.description}</span>
+                <span className="text-red-500">
+                  {validationErrors.description}
+                </span>
               )}
               <div className="flex w-full h-32 justify-end items-end">
                 <button
@@ -391,11 +395,15 @@ const CreateFreelancerPage = () => {
           )}
           {counter === 2 && (
             <>
-              {isLoading ?
+              {isLoading ? (
                 <div className="min-h-[calc(70vh)] flex items-center align-center justify-center mt-5 ml-5 w-full">
                   <img src="loading.svg" height={50} width={50} />
-                </div> : <>
-                  <label className="block font-bold text-xl mb-2">Skills:</label>
+                </div>
+              ) : (
+                <>
+                  <label className="block font-bold text-xl mb-2">
+                    Skills:
+                  </label>
                   <ReactSelect
                     options={skillOptions}
                     isMulti
@@ -413,22 +421,21 @@ const CreateFreelancerPage = () => {
                         ...provided,
                         backgroundColor: "black",
                         color: "white",
-                        overflow: "auto"
+                        overflow: "auto",
                       }),
                       option: (provided, state) => ({
                         ...provided,
                         backgroundColor: "black",
                         color: "white",
-
                       }),
                     }}
                   />
 
-
                   {validationErrors.skill && (
-                    <span className="text-red-500">{validationErrors.skill}</span>
+                    <span className="text-red-500">
+                      {validationErrors.skill}
+                    </span>
                   )}
-
 
                   <div className="flex w-full h-24 justify-end items-end">
                     <button
@@ -455,7 +462,9 @@ const CreateFreelancerPage = () => {
                     >
                       Save & Continue
                     </button>
-                  </div></>}
+                  </div>
+                </>
+              )}
             </>
           )}
           {/* {counter === 3 && (

@@ -91,21 +91,11 @@ const TxBox = ({ cancel, show, txMessage, routeToPush }) => {
           <h3 class="mb-5 text-lg font-bold text-gray-500">
             Waiting for Confirmation
           </h3>
-          <div class="w-full bg-gray-200 rounded-full">
-            <div
-              class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
-              style={{
-                width: counter,
-              }}
-            >
-              {" "}
-              {/* {counter.toFixed(2)}% */}
-            </div>
-          </div>
+          <div class="w-full bg-gray-200 rounded-full"></div>
           <h3 class="mb-5 mt-2 text-lg font-normal text-gray-500">
             Transaction Hash: <br />
           </h3>
-          <h3 class="mb-5 text-lg font-normal text-gray-500">
+          <h3 class="mb-5 text-lg font-normal text-white">
             {txMessage}
 
             {/* {proposalsData[selec'tedOrder]?.price} from{" "}

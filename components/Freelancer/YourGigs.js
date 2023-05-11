@@ -31,7 +31,7 @@ const YourGigs = () => {
           </h1>
         </div>
 
-        <div className="bg-blue-500 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
+        <div className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
           <Link href="/createGig">
             <span className="text-white text-sm">Post</span>
           </Link>
@@ -66,7 +66,6 @@ const YourGigs = () => {
             <p className="text-center text-gray-800 font-bold">No gigs found</p>
           </div>
         )}
-
       </div>
     </div>
   );
