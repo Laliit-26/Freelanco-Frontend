@@ -304,7 +304,7 @@ const CreateFreelancerPage = () => {
         txMessage={txMessage}
       // routeToPush={"/client-profile"}
       />
-      <div className="mt-20 w-[calc(70vw)] shadow-lg   bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 shadow-md rounded-lg backdrop-blur-lg transition-all duration-500 text-white" style={{ boxShadow: '6px 10px 37px 8px rgba(0,0,0,0.75)' }}>
+      <div className="mt-20 w-[calc(70vw)] shadow-lg   bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 shadow-md rounded-lg backdrop-blur-lg transition-all duration-500 text-white " style={{ boxShadow: '6px 10px 37px 8px rgba(0,0,0,0.75)' }}>
         <div className="h-16 w-full flex justify-start items-center border-b pl-8">
           <span className="font-light font-serif text-2xl">
             Create your Gig
@@ -486,7 +486,7 @@ const CreateFreelancerPage = () => {
               </div>
               <div className="flex w-full mt-5 justify-end items-end">
                 <button
-                  className="bg-blue-300 p-4 shadow-sm rounded-3xl text-md text-white px-8"
+                  className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
                   onClick={handleValidation}
                   // onClick={() => {
 
@@ -513,7 +513,7 @@ const CreateFreelancerPage = () => {
                   />
                 </div>
 
-                <div className="max-w-[calc(20vw)] py-4 px-8 shadow-lg rounded-lg mt-2 bg-blue-100 flex-1/4">
+                <div className="max-w-[calc(20vw)] py-4 px-8 shadow-lg rounded-lg mt-16 bg-blue-100 flex-1/4">
                   <div>
                     <h2 className="text-gray-800 text-xl font-semibold">
                       Set your packages
@@ -537,7 +537,7 @@ const CreateFreelancerPage = () => {
 
               <div className="flex w-full h-32 justify-end items-end">
                 <button
-                  className="bg-blue-300 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
+                  className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
                   onClick={() => {
                     setCounter((prevState) => prevState - 1);
                   }}
@@ -545,33 +545,53 @@ const CreateFreelancerPage = () => {
                   Back
                 </button>
                 <button
-                  className="bg-blue-300 p-4 shadow-sm rounded-3xl text-md text-white px-8 "
+                  className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 "
                   onClick={handleValidation}
                 >
                   Continue
                 </button>
               </div>
+
+
             </>
           )}
           {counter === 2 && (
             <>
-              <label className="block font-bold text-xl mb-2">Skills:</label>
-              <ReactSelect
-                options={skillOptions}
-                isMulti
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                components={{
-                  Option,
-                }}
-                onChange={handleChange}
-                allowSelectAll={true}
-                value={skill.optionSelected}
-                className="block w-full bg-gray-200 text-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              />
-              {validationErrors.skill && (
-                <span className="text-red-500">{validationErrors.skill}</span>
-              )}
+              <label className="block font-bold text-xl my-16">Skills:</label>
+             <ReactSelect
+                    options={skillOptions}
+                    isMulti
+                    closeMenuOnSelect={false}
+                    hideSelectedOptions={false}
+                    components={{
+                      Option,
+                    }}
+                    onChange={handleChange}
+                    allowSelectAll={true}
+                    value={skill.optionSelected}
+                    className="block w-full bg-gray-200 text-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    styles={{
+                      control: (provided, state) => ({
+                        ...provided,
+                        backgroundColor: "black",
+                        color: "white",
+                        overflow: "auto"
+                      }),
+                      option: (provided, state) => ({
+                        ...provided,
+                        backgroundColor: "black",
+                        color: "white",
+
+                      }),
+                    }}
+                  />
+
+
+                  {validationErrors.skill && (
+                    <span className="text-red-500">{validationErrors.skill}</span>
+                  )}
+
+
               {/* <div className="flex flex-wrap">
                 {skills.map((skill, idx) => {
                   return (
@@ -670,7 +690,7 @@ const CreateFreelancerPage = () => {
 
               <div className="flex w-full h-24 justify-end items-end">
                 <button
-                  className="bg-blue-300 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
+                  className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
                   onClick={() => {
                     setCounter((prevState) => prevState - 1);
                   }}
@@ -678,7 +698,7 @@ const CreateFreelancerPage = () => {
                   Back
                 </button>
                 <button
-                  className="bg-blue-300 p-4 shadow-sm rounded-3xl text-md text-white px-8 "
+                  className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 "
                   onClick={handleValidation}
                 >
                   Continue
@@ -693,11 +713,11 @@ const CreateFreelancerPage = () => {
                 What would you like to do?{" "}
               </h1>
               {/* Cards */}
-              <div className="flex space-x-16 w-full">
+              <div className="flex space-x-16 w-full hover:text-black">
                 <div
                   className={
                     (isShortTermSelected
-                      ? "h-48 w-1/2 border-2 shadow-md border-blue-200"
+                      ? "h-48 w-1/2 border-8 shadow-md border-purple-200 "
                       : "h-48 w-1/2 border-2 shadow-md") +
                     " flex justify-center hover:bg-blue-100 cursor-pointer transition ease-in-out delay-50 rounded-3xl items-center flex-col"
                   }
@@ -711,17 +731,17 @@ const CreateFreelancerPage = () => {
                     alt=""
                     className="w-16 h-16"
                   />
-                  <span className="font-bold">
+                  <span className="font-bold  ">
                     Short term or part time work
                   </span>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-200">
                     Less than 30 hrs/week
                   </span>
                 </div>
                 <div
                   className={
                     (isShortTermSelected === false
-                      ? "h-48 w-1/2 border-2 shadow-md border-blue-200"
+                      ? "h-48 w-1/2 border-8 shadow-md border-purple-200 hover:text-black"
                       : "h-48 w-1/2 border-2 shadow-md") +
                     " flex justify-center hover:bg-blue-100 cursor-pointer transition ease-in-out delay-50 rounded-3xl items-center flex-col"
                   }
@@ -736,7 +756,7 @@ const CreateFreelancerPage = () => {
                     className="w-16 h-16"
                   />
                   <span className="font-bold">Long term work</span>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-200">
                     Less than 30 hrs/week
                   </span>
                 </div>
@@ -749,7 +769,7 @@ const CreateFreelancerPage = () => {
 
               <div className="flex w-full h-20 justify-end items-end">
                 <button
-                  className="bg-blue-300 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2"
+                  className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 "
                   onClick={() => {
                     setCounter((prevState) => prevState - 1);
                   }}
@@ -760,7 +780,7 @@ const CreateFreelancerPage = () => {
                   className={
                     loading
                       ? "p-4 rounded-3xl text-md text-white w-32"
-                      : "bg-blue-300 p-4 shadow-sm rounded-3xl text-md text-white w-32"
+                      : "bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8"
                   }
                   onClick={async () => {
                     const p = handleValidation();
