@@ -68,9 +68,16 @@ const FreelancerDashboard = () => {
     }
   }, [user]);
   return (
-    <>
+    <div
+      className="bg-cover border-2 h-screen text-white"
+      style={{
+        backgroundImage: `url('/ff.jpeg')`,
+        height:"100%"
+        // filter: "blur(8px)",
+      }}
+    >
       <div className="flex mx-20 space-x-8 mt-20">
-        <div className="flex-1/4 w-1/4">
+        <div className="flex-1/4 w-[20vw] stormItOut">
           <YourProfile
             setShowManageDisputes={setShowManageDisputes}
             showManageDisputes={showManageDisputes}
@@ -87,7 +94,7 @@ const FreelancerDashboard = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

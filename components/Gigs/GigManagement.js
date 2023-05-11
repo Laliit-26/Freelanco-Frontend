@@ -40,8 +40,8 @@ const GigManagement = ({ gig }) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
-    <div className="flex mx-20 mt-20">
-      <div className="mr-20">
+    <div className="flex mx-20 pt-20 pb-20 text-white">
+      <div className="mr-20 hideItOut">
         <MyGigDetails gig={gig} />
       </div>
       <div className="flex flex-col w-full">
@@ -49,8 +49,8 @@ const GigManagement = ({ gig }) => {
           <h1
             className={
               selectedTab == 0
-                ? "text-2xl text-blue-800 font-semibold"
-                : "text-md cursor-pointer px-4 py-2.5 bg-gray-100 rounded-2xl text-blue-800"
+                ? "text-2xl text-white-800 font-semibold"
+                : "text-md cursor-pointer px-4 py-2.5 bg-gray-900 rounded-2xl text-white-800"
             }
             onClick={() => setSelectedTab(0)}
           >
@@ -59,8 +59,8 @@ const GigManagement = ({ gig }) => {
           <h1
             className={
               selectedTab == 1
-                ? "text-2xl text-blue-800 font-semibold"
-                : "text-md cursor-pointer px-4 py-2.5 bg-gray-100 rounded-2xl text-blue-800"
+                ? "text-2xl text-white-800 font-semibold"
+                : "text-md cursor-pointer px-4 py-2.5 bg-gray-900 rounded-2xl text-white-800"
             }
             onClick={() => setSelectedTab(1)}
           >

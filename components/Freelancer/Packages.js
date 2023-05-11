@@ -11,7 +11,7 @@ const Packages = ({ register, control, setValue }) => {
     name: "plans",
   });
 
-  const handleChange = ( newValue) => {
+  const handleChange = (newValue) => {
     setSelectedTab(newValue);
   };
 
@@ -29,25 +29,28 @@ const Packages = ({ register, control, setValue }) => {
 
   return (
     <div>
-      <div className="bg-white rounded-lg shadow-md">
-        <div className="flex">
+      <div className="bg-gray-900 text-white rounded-lg shadow-md w-1/2 justify-between">
+        <div className="flex justify-between w-full">
           <button
-            className={`${selectedTab === 0 ? "bg-gray-200" : ""
-              } text-gray-700 font-medium py-2 px-4 rounded-l-lg hover:bg-gray-100 focus:outline-none`}
+            className={`${
+              selectedTab === 0 ? "bg-gray-400" : ""
+            } text-gray-200 font-medium py-2 px-4 rounded-l-lg hover:bg-gray-900 focus:outline-none`}
             onClick={() => handleChange(0)}
           >
             Basic
           </button>
           <button
-            className={`${selectedTab === 1 ? "bg-gray-200" : ""
-              } text-gray-700 font-medium py-2 px-4 hover:bg-gray-100 focus:outline-none`}
+            className={`${
+              selectedTab === 1 ? "bg-gray-400" : ""
+            } text-gray-200 font-medium py-2 px-4 hover:bg-gray-900 focus:outline-none`}
             onClick={() => handleChange(1)}
           >
             Standard
           </button>
           <button
-            className={`${selectedTab === 2 ? "bg-gray-200" : ""
-              } text-gray-700 font-medium py-2 px-4 rounded-r-lg hover:bg-gray-100 focus:outline-none`}
+            className={`${
+              selectedTab === 2 ? "bg-gray-400" : ""
+            } text-gray-200 font-medium py-2 px-4 rounded-r-lg hover:bg-gray-900 focus:outline-none`}
             onClick={() => handleChange(2)}
           >
             Premium

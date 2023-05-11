@@ -31,7 +31,7 @@ const YourGigs = () => {
           </h1>
         </div>
 
-        <div className="bg-blue-500 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
+        <div className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
           <Link href="/createGig">
             <span className="text-white text-sm">Post</span>
           </Link>
@@ -49,7 +49,7 @@ const YourGigs = () => {
       <div className="flex flex-wrap gap-x-6 gap-y-6">
         {isLoading ? (
           <div className="min-h-[calc(70vh)] flex items-center mt-5 ml-5 flex-col">
-            <img src="loading.svg" height={50} width={50} />
+            <img src="loading.gif" height={50} width={50} />
           </div>
         ) : userGigs.length > 0 ? (
           userGigs.map((gig, idx) => <GigCard gig={gig} key={idx} />)
@@ -66,7 +66,6 @@ const YourGigs = () => {
             <p className="text-center text-gray-800 font-bold">No gigs found</p>
           </div>
         )}
-
       </div>
     </div>
   );

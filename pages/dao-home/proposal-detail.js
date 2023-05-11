@@ -174,7 +174,7 @@ const DaoProposalDetail = () => {
               or refreshing if you don't see your conversations
             </p> */}
             {/* <button onClick={() => getConversations()}>Get Data</button> */}
-            <img src="loading.svg" height={50} width={50} />
+            <img src="loading.gif" height={50} width={50} />
           </div>
         ) : (
           <>

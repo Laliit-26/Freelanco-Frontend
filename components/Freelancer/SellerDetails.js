@@ -219,7 +219,7 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
           <div className="flex justify-between">
             <span className="font-bold">Work Ex.</span>
             {allowEdit && (
-              <div className="bg-blue-400 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
+              <div className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
                 <span
                   className="text-white text-sm"
                   // onClick={() => setState({ activate: true, deactivate: false })}
@@ -265,7 +265,7 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
           <div className="flex justify-between">
             <span className="font-bold">Education</span>
             {allowEdit && (
-              <div className="bg-blue-400 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
+              <div className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
                 <span className="text-white text-sm">Add</span>
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/748/748113.png"
@@ -301,7 +301,7 @@ const FreelancerDetails = ({ freelancerUser, setFreelancerUser }) => {
           <div className="flex justify-between">
             <span className="font-bold">Projects</span>
             {allowEdit && (
-              <div className="bg-blue-400 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
+              <div className="bg-blue-800 rounded-full p-2 flex items-center space-x-2 px-4 cursor-pointer">
                 <span className="text-white text-sm">Add</span>
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/748/748113.png"

@@ -6,7 +6,7 @@ const GigsListing = ({ gigs }) => {
   const { user } = useAuth();
 
   return (
-    <div className="flex flex-wrap gap-x-6 gap-y-6">
+    <div className="flex flex-wrap gap-x-6 gap-y-6 pb-64">
       {gigs.filter((gig) => {
         if (user) {
           return gig?.freelancer?.wallet_address != user.wallet_address;
@@ -25,11 +25,10 @@ const GigsListing = ({ gigs }) => {
             className="mx-20 w-2/4 h-1/4"
             style={{
               filter: "grayscale(1)",
+              width: "10%",
             }}
           />
-          <p className="text-center text-gray-800 font-bold">
-            No results found
-          </p>
+          <p className="text-center text-white font-bold">No results found</p>
         </div>
       )}
     </div>

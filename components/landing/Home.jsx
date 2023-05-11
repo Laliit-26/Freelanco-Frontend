@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 
 import ErrorBox from "../Validation/ErrorBox";
 import TxBox from "../Validation/TxBox";
-import { useNetwork ,useSigner} from "wagmi";
+import { useNetwork, useSigner } from "wagmi";
 
 export function Countdown() {
   const [countdown, setCountdown] = useState({});
@@ -70,7 +70,7 @@ export const Button = ({ text }) => {
   const [showTxDialog, setShowTxDialog] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [txMessage, setTxMessage] = useState(undefined);
-   const { data: signer, isError, isLoading } = useSigner()
+  const { data: signer, isError, isLoading } = useSigner();
 
   const router = useRouter();
   return (
@@ -101,8 +101,8 @@ export const Button = ({ text }) => {
               setShowErrorDialog(true);
             } else {
               try {
-                if(!signer){
-                throw new Error("please connect your wallet");
+                if (!signer) {
+                  throw new Error("please connect your wallet");
                 }
                 let contractWithSigner = whitelistNFT.connect(signer);
                 let tx = await contractWithSigner.joinWhitelist({
@@ -155,7 +155,7 @@ export default function Home() {
   return (
     <section className="relative overflow-hidden bg-gray-900 rounded-lg md:m-0.5 md:mb-5">
       {/* <Navbar /> */}
-      <div className="absolute bottom-0 left-0 z-0 w-[80vw] h-[80vh] bg-blue-400 rounded-full blur-2xl opacity-50 transform translate-x-8 translate-y-1/4"></div>
+      <div className="absolute bottom-0 left-0 z-0 w-[80vw] h-[80vh] bg-blue-800 rounded-full blur-2xl opacity-50 transform translate-x-8 translate-y-1/4"></div>
       <div className="container flex mt-20 h-[89vh] flex-col items-center justify-center md:flex-row">
         <div className="z-10 flex flex-col items-center justify-center w-full md:w-2/3 xl:w-1/2 px-6 md:px-12">
           <h1 className="text-5xl mt-10 md:text-6xl text-white font-bold text-center mb-4">

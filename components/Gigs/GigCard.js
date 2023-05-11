@@ -34,7 +34,7 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
 
   return (
     <div
-      className="border border-white border-opacity-25 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 shadow-md rounded-lg backdrop-blur-lg overflow-hidden transition-all duration-500"
+      className="border border-white border-opacity-25 bg-gradient-to-br from-purple-900 via-gray-900 to-blue-900 shadow-md rounded-lg backdrop-blur-lg overflow-hidden transition-all duration-500"
       // className="m-0 font-sans antialiased bg-gray-900 text-gray-100 select-none"
       style={{
         maxWidth: "250px",
@@ -43,24 +43,26 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
       onMouseOut={() => setIsHover(false)}
     >
       {gig?.awsImageLink && (
-        <Image
-          className="rounded-t-lg cursor-pointer"
-          src={gig?.awsImageLink}
-          alt="product image"
-          width={500}
-          height={500}
-          style={{
-            height: 200,
-            padding:"12px",
-            borderRadius:"1rem"
-          }}
-          onClick={() =>
-            router.push({
-              pathname: "/gig-detail",
-              query: { gig: JSON.stringify(gig._id) },
-            })
-          }
-        />
+        <div className="image-container">
+          <Image
+            className="rounded-2xl cursor-pointer gig-image -mb-24"
+            src={gig?.awsImageLink}
+            alt="product image"
+            width={500}
+            height={500}
+            style={{
+              height: 200,
+              padding: "12px",
+              borderRadius: "2rem",
+            }}
+            onClick={() =>
+              router.push({
+                pathname: "/gig-detail",
+                query: { gig: JSON.stringify(gig._id) },
+              })
+            }
+          />
+        </div>
       )}
 
       <div className="flex justify-start items-center">
@@ -96,7 +98,6 @@ export default ({ isTopRated = true, gig, proposalsAll = [] }) => {
         >
           {gig?.title}
         </h5>
-
 
         <div className="flex items-center mt-2.5 mb-5">
           <svg

@@ -5,7 +5,7 @@ import GigHeader from "../components/Gigs/GigHeader";
 
 const gigs = () => {
   return (
-    <div className="flex-col items-center justify-start h-screen w-screen ml-20">
+    <div className="flex-col items-center justify-start bg-black">
       <GigHeader />
     </div>
   );

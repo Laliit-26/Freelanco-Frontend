@@ -29,23 +29,36 @@ const GigDetail = () => {
   const isMyGig = user?._id == gig?.user_ref;
 
   return (
-    <>
-      {gig && user?._id == gig?.user_ref ?
-       (<GigManagement gig={gig} />) :
-        (
-          <div className="flex mx-20 mt-20">
-            <div className="flex-3/4 w-3/4">
-              <GigDetails gig={gig} />
-            </div>
-            <div className="flex-1/4 w-1/4">
-              <GigActions gig={gig} />
-            </div>
-          </div>
-        )
+    <div
+      style={
+        user?._id == gig?.user_ref
+          ? {
+              backgroundImage: `url('/ff.jpeg')`,
+              backgroundSize: "cover",
 
+              // filter: "blur(8px)",
+            }
+          : {
+              // backgroundColor: "black",
+              // color: "white",
+              backgroundImage: `url('/ff.jpeg')`,
+              // backgroundSize: "cover",
+            }
       }
-
-    </>
+    >
+      {gig && user?._id == gig?.user_ref ? (
+        <GigManagement gig={gig} />
+      ) : (
+        <div className="flex px-20 pt-20">
+          <div className="flex-3/4 w-3/4">
+            <GigDetails gig={gig} />
+          </div>
+          <div className="flex-1/4 w-1/4">
+            <GigActions gig={gig} />
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

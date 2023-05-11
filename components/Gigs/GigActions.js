@@ -12,11 +12,11 @@ const Basic = ({ gig, tabSelected }) => {
     <>
       {gig?.plans?.length > 0 ? (
         gig?.plans[tabSelected]?.price !== 0 && (
-          <div className="w-full max-w-sm p-4 bg-white rounded-lg sm:p-8 text-black">
+          <div className="w-full max-w-sm p-4 rounded-lg sm:p-8 text-black">
             {/* <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
         Basic Plan
       </h5> */}
-            <div className="flex items-baseline text-gray-900 ">
+            <div className="flex items-baseline text-white ">
               <span className="text-3xl font-semibold">$</span>
               <span className="text-5xl font-extrabold tracking-tight">
                 {gig?.plans?.length > 0 ? (
@@ -95,7 +95,7 @@ const GigActions = ({ gig }) => {
   const tabClass =
     "text-sm text-center font-normal text-serif p-4 text-blue-800 cursor-pointer";
 
-  const selectedClass = " bg-white border-b-4 border-b-blue-800 text-bold";
+  const selectedClass = " text-white border-b-4 border-b-blue-800 text-bold";
 
   const notSelectedClass = "";
 
@@ -118,11 +118,11 @@ const GigActions = ({ gig }) => {
   }, [user]);
 
   return (
-    <div className="min-h-[calc(70vh)] flex-col shadow-lg border-1 bg-white mt-20 ml-10 w-full">
+    <div className="min-h-[calc(70vh)] flex-col shadow-lg border-1 bg-blue-900 mt-20 ml-10 w-full bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900">
       {clientProposals.length === 0 ? (
         <div>
           {!isMyGig && (
-            <div className="flex justify-around">
+            <div className="flex justify-around ">
               <p
                 className={
                   tabClass +

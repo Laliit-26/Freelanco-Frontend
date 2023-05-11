@@ -130,7 +130,7 @@ const YourProfile = ({
     : null;
 
   return (
-    <div className="border shadow-lg">
+    <div className="shadow-2xl bg-transparent">
       {!router.query.freelancer && (
         <div className="flex justify-center items-center h-32 flex-col">
           {currentFreelancerData?.awsImageLink && (
@@ -167,7 +167,7 @@ const YourProfile = ({
       )}
       {!router.query.freelancer && (
         <>
-          <div className="flex flex-col p-8 bg-blue-100">
+          <div className="flex flex-col p-8 bg-gray-900 hideItOut">
             {completenss == 100 ? (
               <span className="text-xs font-bold text-blue-600 text-center">
                 <div className="h-16 flex items-center justify-center w-full bg-white mt-4 rounded-lg">
@@ -175,7 +175,7 @@ const YourProfile = ({
                     {" "}
                     Boost your profile
                   </p>
-                  <div className="bg-blue-400 h-8 w-10 p-2 cursor-pointer hover:scale-110 rounded-full relative -right-4 flex justify-center items-center">
+                  <div className="bg-gray-900 h-8 w-10 p-2 cursor-pointer hover:scale-110 rounded-full relative -right-4 flex justify-center items-center">
                     <img
                       src="https://img.icons8.com/ios-glyphs/344/long-arrow-right.png"
                       alt=""
@@ -205,7 +205,7 @@ const YourProfile = ({
                     {completenss || 0}%
                   </span>
                 </div>
-                <div className="h-16 flex items-center justify-center w-full bg-white mt-4 rounded-lg">
+                <div className="h-16 flex items-center justify-center w-full bg-gray-800 mt-4 rounded-lg">
                   <p className="font-light font-sans text-xs p-4">
                     {" "}
                     {currentFreelancerData?.education?.length == 0
@@ -218,7 +218,7 @@ const YourProfile = ({
                       ? "Add projects so clients know you're a pro"
                       : ""}
                   </p>
-                  <div className="bg-blue-400 h-8 w-10 p-2 cursor-pointer hover:scale-110 rounded-full relative -right-4 flex justify-center items-center">
+                  <div className="bg-blue-800 h-8 w-10 p-2 cursor-pointer hover:scale-110 rounded-full relative -right-4 flex justify-center items-center">
                     <img
                       src="https://img.icons8.com/ios-glyphs/344/long-arrow-right.png"
                       alt=""
@@ -245,7 +245,7 @@ const YourProfile = ({
               // onClick={() => signOut()}
               href="/dao-login"
               className={
-                "font-light border-2 px-3 py-1 rounded-md text-blue-800 text-sm cursor-pointer -mt-1 border-blue-800 text-center my-5 mx-2"
+                "font-light border-1 px-3 py-1 rounded-md text-white-800 text-sm cursor-pointer -mt-1 border-blue-800 text-center my-5 mx-2"
                 // borderClass
               }
               onClick={() => {

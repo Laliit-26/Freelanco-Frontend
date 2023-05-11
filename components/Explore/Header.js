@@ -46,7 +46,7 @@ const Header = () => {
               className="placeholder:italic placeholder:text-slate-500 w-2/3 block rounded-l-lg bg-white h-10 border border-slate-300 py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm hover:border-blue-400"
               placeholder="Try 'building mobile app'"
             />
-            <div className="h-10 w-10 bg-blue-400 rounded-r-lg flex justify-center items-center hover:bg-blue-300 cursor-pointer mr-2">
+            <div className="h-10 w-10 bg-blue-800 rounded-r-lg flex justify-center items-center hover:bg-blue-300 cursor-pointer mr-2">
               <img
                 style={{
                   filter: "brightness(0) invert(1)",

@@ -226,31 +226,31 @@ function Chat({
 
   return (
     // <div className="shadow ">
-    <div className="border-2 border-gray-200 border-solid rounded-lg dark:border-gray-700">
+    <div className="border-gray-900 rounded-2xl mr-10">
       <div className="w-full  sm:items-center justify-between border-gray-200">
         {freelancerData ? (
           <div
             className="relative flex items-center"
-            style={{ backgroundColor: "whitesmoke" }}
+            // style={{ backgroundColor: "whitesmoke" }}
           >
             <div className="relative">
               <Image
-                className="w-10 sm:w-16 h-10 sm:h-16 rounded-full"
+                className="w-10 sm:w-16 h-10 sm:h-16 rounded-full ml-2 p-1"
                 src={"https://ipfs.io/ipfs/" + freelancerData?.ipfsImageHash}
                 alt="product image"
                 width={50}
                 height={50}
               />
             </div>
-            <div className="flex flex-col ml-5 leading-tight">
+            <div className="flex flex-col ml-5 leading-tight text-white">
               <div className="text-2xl mt-1 flex items-center">
-                <h3>
+                <h3 className="text-white">
                   {freelancerData?.name
                     ? titleCase(freelancerData?.name)
                     : undefined}
                 </h3>
               </div>
-              <span className="mb-2 text-xs font-bold tracking-tight text-gray-500">
+              <span className="mb-2 text-xs font-bold tracking-tight text-white">
                 {width > 1000
                   ? freelancerData?.wallet_address
                   : reduceWalletAddress(freelancerData?.wallet_address)}
@@ -263,7 +263,7 @@ function Chat({
         ) : (
           <div
             className="relative flex items-center"
-            style={{ backgroundColor: "whitesmoke" }}
+            // style={{ backgroundColor: "whitesmoke" }}
           >
             <div className="relative">
               <img
@@ -275,7 +275,7 @@ function Chat({
               />
             </div>
             <div className="flex-col ml-5">
-              <p className="font-bold text-md hover:underline cursor-pointer">
+              <p className="font-bold text-md hover:underline cursor-pointer text-white">
                 {to[0] != user?.wallet_address
                   ? width > 1000
                     ? to[0]
@@ -298,15 +298,19 @@ function Chat({
           <>
             {state.messages.map((message, id) => {
               return getTimeDisplayCondition(state.messages, id) ? (
-                <Fragment key={id}>
-                  {id == 0
-                    ? generateDate(state.messages[id]?.created_at)
-                    : id > 0 &&
-                      new Date(state.messages[id]?.created_at).getDate() -
-                        new Date(state.messages[id - 1]?.created_at).getDate() >
-                        0
-                    ? generateDate(state.messages[id]?.created_at)
-                    : null}
+                <Fragment key={id} className="text-white">
+                  <div className="text-white">
+                    {id == 0
+                      ? generateDate(state.messages[id]?.created_at)
+                      : id > 0 &&
+                        new Date(state.messages[id]?.created_at).getDate() -
+                          new Date(
+                            state.messages[id - 1]?.created_at
+                          ).getDate() >
+                          0
+                      ? generateDate(state.messages[id]?.created_at)
+                      : null}
+                  </div>
                   {message.from != user?.wallet_address && (
                     <MessageLeft
                       message={message.text}
@@ -437,10 +441,7 @@ function Chat({
         )}
       </div>
       {/* {file && <img src={URL.createObjectURL(file)} style={{ height: "300px", width: "auto" }} />} */}
-      <div
-        className="border-t-2 border-gray-200 sm:mb-0"
-        style={{ height: "8vh" }}
-      >
+      <div className="sm:mb-0" style={{ height: "8vh" }}>
         <div className="relative flex">
           <input
             disabled={file}
@@ -450,7 +451,8 @@ function Chat({
             ref={ref}
             onKeyDown={handleKeyDown}
             placeholder="Write your message!"
-            className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3"
+            className="w-full border-0.5 border-white mx-2 focus:outline-none  bg-transparent transition-all duration-500 text-white focus:placeholder-gray-400 placeholder-gray-600 pl-12 rounded-md py-3"
+            // style={{ boxShadow: "6px 10px 37px 8px rgba(0,0,0,0.75)" }}
           />
           <div className="absolute right-0 items-center inset-y-0  sm:flex">
             {/* <AttachFileIcon />
@@ -480,7 +482,7 @@ function Chat({
             <button
               type="button"
               onClick={() => sendMessage()}
-              className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+              className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white focus:outline-none"
             >
               <span className="font-bold">Send</span>
               <svg
@@ -494,32 +496,6 @@ function Chat({
             </button>
           </div>
         </div>
-
-        {/* <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              id="inline-full-name"
-              type="text"
-              onChange={(e) => setMessage(e.target.value)}
-              value={messageState}
-              ref={ref}
-              onKeyDown={handleKeyDown}
-            /> */}
-        {/* <Box
-            sx={{
-              width: { xs: "32%", sm: "32%", md: "20%" },
-              display: "flex",
-              justifyContent: "left",
-              marginLeft: "10px",
-            }}
-          >
-            <p
-              className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-              onClick={() => sendMessage()}
-            >
-              Send
-            </p>
-          </Box>
-        </Box> */}
       </div>
     </div>
     // </div>

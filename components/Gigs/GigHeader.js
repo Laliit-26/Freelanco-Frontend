@@ -36,22 +36,28 @@ const GigHeader = () => {
 
   return (
     <>
-      <div className="bg-white">
-        <div>
+      <div
+        className="px-20 text-white bg-black bg-cover"
+        style={{
+          backgroundImage: `url('/ff.jpeg')`,
+          // filter: "blur(8px)",
+        }}
+      >
+        <div className="">
           <div
-            className="relative z-40 lg:hidden"
+            className="relative z-40 lg:hidden "
             role="dialog"
             aria-modal="true"
           >
             <div className="fixed inset-0 bg-black bg-opacity-25"></div>
 
             <div className="fixed inset-0 z-40 flex">
-              <div className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+              <div className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto py-4 pb-12 shadow-xl">
                 <div className="flex items-center justify-between px-4">
                   <h2 className="text-lg font-medium text-gray-900">Filters</h2>
                   <button
                     type="button"
-                    className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                    className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md p-2 text-gray-400"
                   >
                     <span className="sr-only">Close menu</span>
 
@@ -560,7 +566,7 @@ const GigHeader = () => {
                   <h3 className="sr-only">Categories</h3>
                   <ul
                     role="list"
-                    className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
+                    className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-white"
                   >
                     {filtered_category?.[0]?.items?.map((sub_category) => {
                       return (
@@ -580,11 +586,11 @@ const GigHeader = () => {
                     <h3 className="-my-3 flow-root">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500"
+                        className="flex w-full items-center justify-betweenpy-3 text-sm text-gray-400 hover:text-gray-500"
                         aria-controls="filter-section-0"
                         aria-expanded="false"
                       >
-                        <span className="font-medium text-gray-900">
+                        <span className="font-medium text-white">
                           Seller Details
                         </span>
                       </button>
@@ -666,10 +672,10 @@ const GigHero = ({ title }) => {
         <h3 className="text-sm text-gray-400 font-light">
           Stand out from the crowd with a logo that fits your brand personality.{" "}
         </h3>
-        <Image src={"/play.png"} width={20} height={5} className="-mx-1" />
-        <span className="text-xs text-blue-800 font-light select-none cursor-pointer">
+        {/* <Image src={"/play.png"} width={20} height={5} className="-mx-1" /> */}
+        {/* <span className="text-xs text-blue-800 font-light select-none cursor-pointer">
           How Freelanco Works
-        </span>
+        </span> */}
       </div>
     </div>
   );

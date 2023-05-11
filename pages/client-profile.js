@@ -111,7 +111,7 @@ const ClientProfile = () => {
           <div className="flex flex-wrap gap-x-6 gap-y-6">
             {isLoading ? (
               <div className="flex justify-center align-center ">
-                <img src="loading.svg" height={50} width={50} />
+                <img src="loading.gif" height={50} width={50} />
               </div>
             ) : sentProposals.length > 0 ? (
               sentProposals.map((gig, idx) => {
