@@ -87,6 +87,17 @@ const classes = {
     margin: 0,
     wordWrap: "break-word",
   },
+  messageContentOffer: {
+    margin: 'auto',
+    backgroundColor: 'black',
+    color: 'white',
+    padding: "10px",
+    width: "80%",
+    padding:"2rem",
+    fontSize:"1.4rem",
+    borderRadius: "10px",
+    wordWrap:"break-word"
+  },
   messageTimeStampRight: {
     // position: "absolute",
     fontSize: ".85em",
@@ -191,9 +202,9 @@ export const MessageLeft = (props) => {
                   style={{ height: "300px", width: "auto" }}
                   alt=""
                 />
-              ) : (
-                <p style={classes.messageContent}>{message}</p>
-              )}
+              ) :
+                  props.type == 'Offer' ? (<p style={classes.messageContentOffer}>{message}</p>) : (<p style={classes.messageContent}>{message}</p>)
+              }
             </div>
           </div>
         </div>
@@ -235,9 +246,9 @@ export const MessageRight = (props) => {
             style={{ height: "auto", width: "300px" }}
             alt=""
           />
-        ) : (
-          <p style={classes.messageContent}>{message}</p>
-        )}
+        ) :
+            props.type == 'Offer' ? (<p style={classes.messageContentOffer}>{message}</p>) : (<p style={classes.messageContent}>{message}</p>)
+        }
       </div>
     </div>
   );

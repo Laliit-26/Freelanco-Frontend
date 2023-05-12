@@ -57,13 +57,15 @@ function Chat({
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    for (let i = 0; i < 2; i++) {
-      let c = conversationsData[i];
-      if (c._id == selected) {
-        c.messages = state.messages;
+    if (conversationsData) {
+      for (let i = 0; i < conversationsData.length; i++) {
+        let c = conversationsData[i];
+        if (c._id == selected) {
+          c.messages = state.messages;
+        }
       }
+      setConversationsData(conversationsData);
     }
-    setConversationsData(conversationsData);
   }, [state]);
 
   useEffect(() => {
@@ -231,7 +233,7 @@ function Chat({
         {freelancerData ? (
           <div
             className="relative flex items-center"
-            // style={{ backgroundColor: "whitesmoke" }}
+          // style={{ backgroundColor: "whitesmoke" }}
           >
             <div className="relative">
               <Image
@@ -263,7 +265,7 @@ function Chat({
         ) : (
           <div
             className="relative flex items-center"
-            // style={{ backgroundColor: "whitesmoke" }}
+          // style={{ backgroundColor: "whitesmoke" }}
           >
             <div className="relative">
               <img
@@ -281,8 +283,8 @@ function Chat({
                     ? to[0]
                     : reduceWalletAddress(to[0])
                   : width > 1000
-                  ? to[1]
-                  : reduceWalletAddress(to[1])}{" "}
+                    ? to[1]
+                    : reduceWalletAddress(to[1])}{" "}
               </p>
             </div>
           </div>
@@ -304,12 +306,12 @@ function Chat({
                       ? generateDate(state.messages[id]?.created_at)
                       : id > 0 &&
                         new Date(state.messages[id]?.created_at).getDate() -
-                          new Date(
-                            state.messages[id - 1]?.created_at
-                          ).getDate() >
-                          0
-                      ? generateDate(state.messages[id]?.created_at)
-                      : null}
+                        new Date(
+                          state.messages[id - 1]?.created_at
+                        ).getDate() >
+                        0
+                        ? generateDate(state.messages[id]?.created_at)
+                        : null}
                   </div>
                   {message.from != user?.wallet_address && (
                     <MessageLeft
@@ -379,10 +381,10 @@ function Chat({
                     ? generateDate(state?.messages[id]?.created_at)
                     : id > 0 &&
                       new Date(state.messages[id]?.created_at).getDate() -
-                        new Date(state.messages[id - 1]?.created_at).getDate() >
-                        0
-                    ? generateDate(state.messages[id]?.created_at)
-                    : null}
+                      new Date(state.messages[id - 1]?.created_at).getDate() >
+                      0
+                      ? generateDate(state.messages[id]?.created_at)
+                      : null}
                   {message.from != user?.wallet_address && (
                     <MessageLeft
                       message={message.text}
@@ -452,7 +454,7 @@ function Chat({
             onKeyDown={handleKeyDown}
             placeholder="Write your message!"
             className="w-full border-0.5 border-white mx-2 focus:outline-none  bg-transparent transition-all duration-500 text-white focus:placeholder-gray-400 placeholder-gray-600 pl-12 rounded-md py-3"
-            // style={{ boxShadow: "6px 10px 37px 8px rgba(0,0,0,0.75)" }}
+          // style={{ boxShadow: "6px 10px 37px 8px rgba(0,0,0,0.75)" }}
           />
           <div className="absolute right-0 items-center inset-y-0  sm:flex">
             {/* <AttachFileIcon />

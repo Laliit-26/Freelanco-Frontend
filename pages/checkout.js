@@ -178,23 +178,23 @@ const checkout = () => {
         txMessage={txMessage}
       // routeToPush={"/client-profile"}
       />
-      <div className="flex justify-start items-start bg-gray-50 w-full p-14 pt-20 px-40">
+      <div className="flex justify-center items-center min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 h-screen px-16 flex-col md:flex-row">
         <div className="w-full flex-col justify-start items-start mr-10">
           <div className="">
-            <p className="text-3xl  lg:text-4xl font-semibold leading-7 lg:leading-9 text-blue-800">
+            <p className="text-3xl  lg:text-4xl font-semibold leading-7 lg:leading-9 text-white">
               Check out
             </p>
           </div>
           <div className="mt-2">
             <Link
               href="explore"
-              className="text-base leading-4 focus:outline-none focus:underline hover:underline hover:text-blue-800 text-gray-600 cursor-pointer"
+              className="text-base leading-4 focus:outline-none focus:underline hover:underline hover:text-blue-800 text-gray-300 cursor-pointer"
             >
               Back to exploring?
             </Link>
           </div>
           <div className="mt-12">
-            <p className="text-lg  leading-4 text-blue-800">
+            <p className="text-lg  leading-4 text-gray-200">
               Do you have any{" "}
               <a
                 href="javascript:void(0)"
@@ -207,7 +207,7 @@ const checkout = () => {
           <div className="my-4 flex flex-col justify-start items-start w-full space-y-8">
             <textarea
               {...register("terms")}
-              className="p-8 focus:ring-2 rounded-lg focus:ring-gray-500 focus:outline-none px-2 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
+              className="p-8 focus:ring-2 rounded-lg focus:ring-gray-500 focus:outline-none px-2 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full bg-gray-400 text-black"
               placeholder="Feel free to write your about your deal"
               rows={5}
             />
@@ -217,18 +217,18 @@ const checkout = () => {
           </div>
         </div>
         <div className="flex mt-7 flex-col items-end w-full space-y-6">
-          <h1 className="text-2xl  font-semibold leading-6 text-blue-800 self-start">
+          <h1 className="text-2xl  font-semibold leading-6 text-gray-200 self-start">
             Order Summary
           </h1>
           <div className="flex justify-between w-full items-center">
-            <p className="text-lg leading-4 text-gray-600">
+            <p className="text-lg leading-4 text-gray-300">
               Freelancer Charges $
             </p>
             <input
               name="freelancer_charges"
               type="number"
               onChange={handleChange}
-              className="mr-2  leading-4  placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+              className="mr-2  leading-4  placeholder:italic placeholder:text-slate-400 block bg-gray-100 bg-opacity-5 h-12 border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm text-white"
             />
           </div>
           {validationErrors.charge && (
@@ -236,25 +236,26 @@ const checkout = () => {
           )}
 
           <div className="flex justify-between w-full items-center">
-            <p className="text-lg  leading-4 text-gray-600">
+            <p className="text-lg  leading-4 text-gray-300">
               DAO Charges (20%)
             </p>
-            <p className="text-lg  font-semibold leading-4 text-gray-600">
+            <p className="text-lg  font-semibold leading-4 text-gray-300">
               ${daoCharge}
             </p>
           </div>
           <div className="flex justify-between w-full items-center">
-            <p className="text-lg leading-4 text-gray-600">Sub total</p>
-            <p className="text-lg font-semibold leading-4 text-gray-600">
+            <p className="text-lg leading-4 text-gray-300">Sub total</p>
+            <p className="text-lg font-semibold leading-4 text-gray-300">
               ${total}
             </p>
           </div>
           <div className="flex justify-between w-full items-center">
-            <p className="text-lg leading-4 text-gray-600">Choose Deadline</p>
+            <p className="text-lg leading-4 text-gray-300">Choose Deadline</p>
             <div>
               <input
                 {...register("deadline")}
                 type="date"
+                className="bg-gray-400 text-black"
               // selected={startDate}
               // onChange={(date) => setStartDate(date)}
               />
@@ -266,9 +267,7 @@ const checkout = () => {
 
           <div className="flex justify-end w-full items-center">
             <span
-              className={
-                "font-light border-2 px-9 py-2 text-lg rounded-md text-blue-800 cursor-pointer border-blue-800"
-              }
+              className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 hover:from-blue-800 hover:to-gray-700 p-4 shadow-sm rounded-3xl text-md text-white px-8 mr-2 cursor-pointer"
               onClick={submit_proposal}
             >
               Sign & Pay
@@ -276,23 +275,25 @@ const checkout = () => {
           </div>
         </div>
       </div>
-      <div className="border-blue-800 border-2 mx-20 h-[60vh] my-20 rounded-2xl flex-col pl-20 pt-20">
-        <h1 className="text-5xl my-10 font-semibold text-blue-800">
-          Join the Freelanco Community
-        </h1>
-        <h1 className="text-md w-2/3 leading-6 text-blue-800">
-          Looking to learn more about Freelanco and ZOO? No matter where you’re
-          from, here are the best resources available in order to get educated,
-          and become part of the Community.
-        </h1>
-
-        <button
-          className="mt-10 text-xl font-light text-white rounded-2xl px-6 py-4 bg-blue-800"
-          onClick={() => router.push("dao-login", "dao-portal")}
-        >
-          Join the DAO
-        </button>
+      <div className="bg-gradient-to-b from-purple-900 to-blue-900 h-screen px-4 md:px-8 lg:px-16 xl:px-24 flex flex-col justify-center items-center">
+        <div className="border-blue-800 border-2 mx-4 md:mx-10 lg:mx-20 h-[60vh] my-20 rounded-2xl flex-col p-8 md:p-12 lg:p-16 text-center md:text-left">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl my-6 md:my-10 font-semibold text-white">
+            Join the Freelanco Community
+          </h1>
+          <p className="text-md md:text-lg lg:text-xl xl:text-2xl leading-6 text-gray-300 mb-8 md:mb-12 lg:mb-16">
+            Looking to learn more about Freelanco and ZOO? No matter where you’re from,
+            here are the best resources available in order to get educated, and become
+            part of the Community.
+          </p>
+          <button
+            className="text-lg md:text-xl font-light text-white rounded-2xl px-6 py-4 bg-blue-600 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
+            onClick={() => router.push("dao-login", "dao-portal")}
+          >
+            Join the DAO
+          </button>
+        </div>
       </div>
+
     </>
   );
 };
