@@ -152,7 +152,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      if (token != null) {
+      // if (token != null) {
         const token = localStorage.getItem("token");
         setToken(token);
         const decodedToken = jwt_decode(token);
@@ -164,9 +164,10 @@ export const AuthProvider = ({ children }) => {
         //   connectSocket(user?._id);
         // }
         setValues();
-      } else {
-        setIsLoggedIn(false);
-      }
+      // } 
+    }
+    else {
+      setIsLoggedIn(false);
     }
   }, []);
 
