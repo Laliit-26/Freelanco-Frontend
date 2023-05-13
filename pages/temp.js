@@ -1,6 +1,6 @@
 import React from "react";
 
-export const temp = () => {
+const temp = () => {
   return (
     <div
       className="flex px-20 space-x-8 pt-20 bg-cover"
@@ -231,3 +231,5 @@ export const temp = () => {
     </div>
   );
 };
+
+export default temp;
