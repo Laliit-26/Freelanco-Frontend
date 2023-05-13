@@ -52,8 +52,8 @@ const DaoHome = () => {
   }, []);
 
   return (
-    <div className="">
-      <div className="bg-gray-900 flex flex-col items-start justify-center text-center w-full text-white font-extrabold px-40 py-20">
+    <div className="bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 min-h-screen">
+      <div className="flex flex-col items-start justify-center text-center w-full text-white font-extrabold px-40 py-20">
         <p className="text-5xl ">Governance Overview</p>
         <div className="flex gap-x-2">
           <div className="w-64 border-2 border-white h-16 mt-5 rounded-2xl">

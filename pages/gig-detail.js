@@ -30,18 +30,18 @@ const GigDetail = () => {
 
   return (
     <div
+      className="min-h-screen  bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900"
       style={
         user?._id == gig?.user_ref
           ? {
-              backgroundImage: `url('/ff.jpeg')`,
-              backgroundSize: "cover",
-
+              // backgroundImage: `url('/ff.jpeg')`,
+              // backgroundSize: "cover",
               // filter: "blur(8px)",
             }
           : {
               // backgroundColor: "black",
-              // color: "white",
-              backgroundImage: `url('/ff.jpeg')`,
+              // // color: "white",
+              // backgroundImage: `url('/ff.jpeg')`,
               // backgroundSize: "cover",
             }
       }
@@ -53,7 +53,7 @@ const GigDetail = () => {
           <div className="flex-3/4 w-3/4">
             <GigDetails gig={gig} />
           </div>
-          <div className="flex-1/4 w-1/4">
+          <div className="flex-1/4 w-1/4 phoneItOut">
             <GigActions gig={gig} />
           </div>
         </div>

@@ -118,7 +118,7 @@ const GigActions = ({ gig }) => {
   }, [user]);
 
   return (
-    <div className="min-h-[calc(70vh)] flex-col shadow-lg border-1 bg-blue-900 mt-20 ml-10 w-full bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900">
+    <div className="min-h-[calc(70vh)] flex-col rounded-2xl shadow-lg border-1 bg-blue-900 mt-20 ml-10 w-full bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900">
       {clientProposals.length === 0 ? (
         <div>
           {!isMyGig && (

@@ -7,7 +7,7 @@ import MakeDispute from "../Gigs/MakeDispute";
 
 import ErrorBox from "../Validation/ErrorBox";
 import TxBox from "../Validation/TxBox";
-import { useSigner } from 'wagmi'
+import { useSigner } from "wagmi";
 
 const OrderManagement = ({ approvedProosals }) => {
   const [selectedOrder, setSeletedOrder] = useState(0);
@@ -20,7 +20,7 @@ const OrderManagement = ({ approvedProosals }) => {
   const [showTxDialog, setShowTxDialog] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [txMessage, setTxMessage] = useState(undefined);
-  const { data: signer, isError, isLoading } = useSigner()
+  const { data: signer, isError, isLoading } = useSigner();
 
   const markSuccessful = async () => {
     try {
@@ -108,7 +108,7 @@ const OrderManagement = ({ approvedProosals }) => {
           return (
             <div
               key={idx}
-              className="cursor-pointer shadow my-2 py-2"
+              className="cursor-pointer shadow text-white my-2 py-2"
               onClick={() => {
                 setSeletedOrder(idx);
               }}

@@ -7,13 +7,20 @@ import useAuth from ".././hooks/useAuth";
 import Deck from "../components/Explore/Deck";
 import { getProposalsOfClient } from "../api/auth";
 import { getAllGig, getPopular, getGigBySearch } from "../api/gig";
+import { watchAccount } from "@wagmi/core";
+import ErrorBox from "../components/Validation/ErrorBox";
+import { useRouter } from "next/router";
 
 const GigsListing = () => {
   const [mostPopular, setMostPopular] = useState([]);
+  const [showErrorDialog, setShowErrorDialog] = useState(false);
+  const [showTxDialog, setShowTxDialog] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(undefined);
+  const [txMessage, setTxMessage] = useState(undefined);
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const { user, search, searchedGigs } = useAuth();
+  const { user, search, searchedGigs, setIsLoggedIn, setUser } = useAuth();
 
   useEffect(() => {
     const getData = async () => {
@@ -32,6 +39,23 @@ const GigsListing = () => {
     getData();
   }, [user]);
 
+  const router = useRouter();
+
+  const unwatch = watchAccount((account) => {
+    if (user) {
+      if (account.address != user.wallet_address) {
+        setIsLoggedIn(false);
+        console.log("LOGGED OUT");
+        setShowErrorDialog(true);
+        setErrorMessage("You logged out");
+        localStorage.removeItem("token");
+
+        // router.push("/login");
+        setUser(null);
+      }
+    }
+  });
+
   return (
     <div
       className="flex-col pt-20 transition ease-in-out delay-80 w-full bg-cover"
@@ -41,6 +65,11 @@ const GigsListing = () => {
         // filter: "blur(8px)",
       }}
     >
+      <ErrorBox
+        show={showErrorDialog}
+        cancel={setShowErrorDialog}
+        errorMessage={errorMessage}
+      />
       <div className="flex gap-x-5 mb-12">
         {searchedGigs.length == 0 ? (
           <div className="mt-10 w-full mr-5 flex flex-col">

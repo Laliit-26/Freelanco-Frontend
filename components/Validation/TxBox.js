@@ -95,7 +95,7 @@ const TxBox = ({ cancel, show, txMessage, routeToPush }) => {
           <h3 class="mb-5 mt-2 text-lg font-normal text-gray-500">
             Transaction Hash: <br />
           </h3>
-          <h3 class="mb-5 text-lg font-normal text-white">
+          <h3 class="mb-5 font-normal text-white text-xs">
             {txMessage}
 
             {/* {proposalsData[selec'tedOrder]?.price} from{" "}

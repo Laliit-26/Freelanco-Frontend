@@ -68,10 +68,16 @@ const ClientProfile = () => {
   }, [user]);
 
   return (
-    <div className="flex mt-20 pr-28">
-      <div className="mr-20">{/* <MyGigDetails gig={gig} /> */}</div>
+    <div
+      className="flex pt-20 min-h-screen bg-cover"
+      style={{
+        backgroundImage: `url('/ff.jpeg')`,
+
+        // filter: "blur(8px)",
+      }}
+    >
       <div className="flex flex-col w-full">
-        <div className="flex gap-x-2 w-full justify-between mb-5">
+        <div className="flex gap-x-2 w-full justify-between px-10 mb-5">
           <h1
             className={
               selectedTab == 0
@@ -98,8 +104,8 @@ const ClientProfile = () => {
                 selectedTab == 1
                   ? "text-md cursor-pointer px-4 py-2.5 bg-gray-100 rounded-2xl text-blue-800"
                   : selectedTab == 2
-                    ? "text-2xl text-blue-800 font-semibold"
-                    : "text-md cursor-pointer px-4 py-2.5 bg-gray-100 rounded-2xl text-blue-800"
+                  ? "text-2xl text-blue-800 font-semibold"
+                  : "text-md cursor-pointer px-4 py-2.5 bg-gray-100 rounded-2xl text-blue-800"
               }
               onClick={() => setSelectedTab(2)}
             >
@@ -140,7 +146,6 @@ const ClientProfile = () => {
                 </div>
               </div>
             )}
-
           </div>
         )}
         {selectedTab == 1 && (
@@ -177,7 +182,7 @@ const ClientProfile = () => {
                           <div className="flex flex-col">
                             <Link
                               href={`/freelancer-profile/${successfulProposals[selectedOrder]?.client?._id}`}
-                            // to={`/freelancer-profile/6`}
+                              // to={`/freelancer-profile/6`}
                             >
                               <span className="font-bold text-md hover:underline cursor-pointer">
                                 {

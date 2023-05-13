@@ -8,9 +8,8 @@ import { ethers } from "ethers";
 import axios from "axios";
 import ErrorBox from "../components/Validation/ErrorBox";
 import TxBox from "../components/Validation/TxBox";
-import { useSigner } from 'wagmi'
-
-
+import { useSigner } from "wagmi";
+import { watchAccount } from "@wagmi/core";
 
 const checkout = () => {
   const router = useRouter();
@@ -23,7 +22,7 @@ const checkout = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [daoCharge, setDaoCharge] = useState(0);
   const [total, setTotal] = useState();
-  const { user, freelancoContract } = useAuth();
+  const { user, freelancoContract, setIsLoggedIn } = useAuth();
   const [conversationRate, setConvertionRate] = useState(undefined);
 
   const [showErrorDialog, setShowErrorDialog] = useState(false);
@@ -31,9 +30,24 @@ const checkout = () => {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [txMessage, setTxMessage] = useState(undefined);
   const [validationErrors, setValidationErrors] = useState("");
-  const { data: signer, isError, isLoading } = useSigner()
+  const { data: signer, isError, isLoading } = useSigner();
 
   console.log("singner....", isError, isLoading);
+
+  const unwatch = watchAccount((account) => {
+    if (user) {
+      if (account.address != user.wallet_address) {
+        setIsLoggedIn(false);
+        console.log("LOGGED OUT");
+        setShowErrorDialog(true);
+        setErrorMessage("You logged out");
+        localStorage.removeItem("token");
+
+        // router.push("/login");
+        setUser(null);
+      }
+    }
+  });
 
   const {
     register,
@@ -59,7 +73,7 @@ const checkout = () => {
   };
 
   const submit_proposal = async () => {
-      try {
+    try {
       const errors = {};
 
       if (!getValues("terms")) {
@@ -106,7 +120,7 @@ const checkout = () => {
         freelancer_ref: gig?.freelancer_ref,
         gig_ref: gig?._id,
       };
-      if(!signer){
+      if (!signer) {
         throw new Error("please connect your wallet");
       }
       let contractWithSigner = freelancoContract.connect(signer);
@@ -115,42 +129,42 @@ const checkout = () => {
 
       const _deadline =
         (Math.floor(new Date(data.deadline).getTime() / 1000) -
-          currentTimestamp) / 12;
-     
-        let tx = await contractWithSigner.sendOffer(
-          gig.tokenId,
-          gig.freelancer.wallet_address,
-          data.terms,
-          Math.floor(_deadline),
+          currentTimestamp) /
+        12;
 
-          {
-            value: ethers.utils.parseEther(
-              Math.floor(data.price / 1.11).toString()
-            ),
-            gasLimit: 1000000,
-          }
-        );
-        console.log("TX HASH OBJECT: ", tx);
+      let tx = await contractWithSigner.sendOffer(
+        gig.tokenId,
+        gig.freelancer.wallet_address,
+        data.terms,
+        Math.floor(_deadline),
 
-        setTxMessage(tx.hash);
-        setShowTxDialog(true);
-        await tx.wait();
-        setShowTxDialog(false);
-        router.push("/client-profile");
-        console.log("TX: RECEIPT OBJECT:", tx);
-        setTxMessage(tx.hash);
-      } catch (e) {
-        setShowErrorDialog(true);
-        if (e.toString().includes("rejected")) {
-          setErrorMessage("User declined the action");
-        } else if (e.toString().includes("deadline")) {
-          setErrorMessage("Please select a date that is after today's date");
-        } else {
-          setErrorMessage(e.toString());
+        {
+          value: ethers.utils.parseEther(
+            Math.floor(data.price / 1.11).toString()
+          ),
+          gasLimit: 1000000,
         }
-      }
-  };
+      );
+      console.log("TX HASH OBJECT: ", tx);
 
+      setTxMessage(tx.hash);
+      setShowTxDialog(true);
+      await tx.wait();
+      setShowTxDialog(false);
+      router.push("/orders");
+      console.log("TX: RECEIPT OBJECT:", tx);
+      setTxMessage(tx.hash);
+    } catch (e) {
+      setShowErrorDialog(true);
+      if (e.toString().includes("rejected")) {
+        setErrorMessage("User declined the action");
+      } else if (e.toString().includes("deadline")) {
+        setErrorMessage("Please select a date that is after today's date");
+      } else {
+        setErrorMessage(e.toString());
+      }
+    }
+  };
 
   useEffect(() => {
     const apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`;
@@ -176,7 +190,7 @@ const checkout = () => {
         show={showTxDialog}
         cancel={setShowTxDialog}
         txMessage={txMessage}
-      // routeToPush={"/client-profile"}
+        // routeToPush={"/client-profile"}
       />
       <div className="flex justify-center items-center min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 h-screen px-16 flex-col md:flex-row">
         <div className="w-full flex-col justify-start items-start mr-10">
@@ -256,8 +270,8 @@ const checkout = () => {
                 {...register("deadline")}
                 type="date"
                 className="bg-gray-400 text-black"
-              // selected={startDate}
-              // onChange={(date) => setStartDate(date)}
+                // selected={startDate}
+                // onChange={(date) => setStartDate(date)}
               />
             </div>
           </div>
@@ -281,9 +295,9 @@ const checkout = () => {
             Join the Freelanco Community
           </h1>
           <p className="text-md md:text-lg lg:text-xl xl:text-2xl leading-6 text-gray-300 mb-8 md:mb-12 lg:mb-16">
-            Looking to learn more about Freelanco and ZOO? No matter where you’re from,
-            here are the best resources available in order to get educated, and become
-            part of the Community.
+            Looking to learn more about Freelanco and ZOO? No matter where
+            you’re from, here are the best resources available in order to get
+            educated, and become part of the Community.
           </p>
           <button
             className="text-lg md:text-xl font-light text-white rounded-2xl px-6 py-4 bg-blue-600 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
@@ -293,7 +307,6 @@ const checkout = () => {
           </button>
         </div>
       </div>
-
     </>
   );
 };

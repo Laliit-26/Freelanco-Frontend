@@ -23,7 +23,6 @@ const DaoProposalDetail = () => {
   const [conversations, setConversations] = useState([]);
   const [conversationsData, setConversationsData] = useState();
 
-
   const [daoMessages, setDaoMessages] = useState([]);
   console.log("convo", conversationsData);
   console.log("conversations", conversations);
@@ -122,8 +121,7 @@ const DaoProposalDetail = () => {
   };
 
   function trimAddress(address) {
-    if (address)
-      return address.slice(0, 6) + "..." + address.slice(-4);
+    if (address) return address.slice(0, 6) + "..." + address.slice(-4);
   }
 
   const generateDate = (date) => {
@@ -136,38 +134,14 @@ const DaoProposalDetail = () => {
 
   return (
     <div>
-      <div className="bg-gray-900 flex flex-col items-center justify-center text-center w-full text-white font-extrabold px-6 md:px-40 pt-10 md:pt-40">
-        <p className="text-3xl md:text-5xl ">Proposal</p>
-        <div className="flex-col">
-          {/* <div className="flex gap-x-2">
-            <div className="w-64 border-2 border-white h-16 mt-5 rounded-2xl">
-              <div className="flex-col text-md pt-1">
-                <p>{proposal?.total0Votes}</p>
-                <p className="text-white-500">Votes For</p>
-              </div>
-            </div>
-            <div className="w-64 border-2 border-white h-16 mt-5 rounded-2xl">
-              <div className="flex-col text-md pt-1">
-                <p>{proposal?.total1Votes}</p>
-                <p className="text-white-500">Votes Against</p>
-              </div>
-            </div>
-          </div> */}
-          {/* <div className="flex-col flex gap-y-5 mt-10">
-            {" "}
-            <button className="cursor-pointer border border-white text-white rounded-2xl font-light p-5">
-              Vote for Freelancer
-            </button>{" "}
-            <button className="cursor-pointer border border-white text-white rounded-2xl font-light p-5">
-              Vote for Client
-            </button>{" "}
-          </div> */}
-        </div>
-      </div>
-      <div className="px-4 md:px-40 py-4 bg-gray-900 font-medium">
+      <div className="flex flex-col items-center justify-center text-center w-full text-white font-extrabold"></div>
+      <div className="px-4 md:px-40 py-4 pt-20  bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 font-medium">
         <div className="w-full">
+          <p className="text-3xl md:text-5xl text-white ">Proposal</p>
           <div className="flex justify-between items-center">
-            <p className="text-sm md:text-md font-bold text-gray-400">Reason for Proposal</p>
+            <p className="text-sm md:text-md font-bold text-gray-400">
+              Reason for Proposal
+            </p>
             <div className="flex flex-col">
               <p className="text-sm md:text-md font-bold py-4 md:py-8 pl-4 md:pl-8 text-gray-300 hover:underline cursor-pointer">
                 Made By:{" "}
@@ -253,8 +227,8 @@ const DaoProposalDetail = () => {
             //   conversationsData.freelancer[0]
             // }
             /> */}
-            <div className="flex justify-between text-white pt-8 text-xl"><div>Freelancer ({trimAddress(conversationsData?.freelancer_address)})</div><div>Client ({trimAddress(conversationsData?.client_address)})</div></div>
-            <div className=" min-h-[calc(100vh-120px)]  bg-gradient-to-br from-blue-900 via-gray-800 to-gray-900 h-screen py-4 overflow-scroll ">
+
+            <div className=" min-h-[calc(100vh-120px)] mt-20 rounded-2xl h-screen py-4 overflow-scroll ">
               {conversations != null && conversations.length > 0 ? (
                 <>
                   {conversations.map((message, id) => {
@@ -264,15 +238,18 @@ const DaoProposalDetail = () => {
                           {id == 0
                             ? generateDate(conversations[id]?.created_at)
                             : id > 0 &&
-                              new Date(conversations[id]?.created_at).getDate() -
                               new Date(
-                                conversations[id - 1]?.created_at
-                              ).getDate() >
-                              0
-                              ? generateDate(conversations[id]?.created_at)
-                              : null}
+                                conversations[id]?.created_at
+                              ).getDate() -
+                                new Date(
+                                  conversations[id - 1]?.created_at
+                                ).getDate() >
+                                0
+                            ? generateDate(conversations[id]?.created_at)
+                            : null}
                         </div>
-                        {message.from == conversationsData?.freelancer_address && (
+                        {message.from ==
+                          conversationsData?.freelancer_address && (
                           <MessageLeft
                             message={message.text}
                             timestamp={message.created_at}
@@ -280,6 +257,9 @@ const DaoProposalDetail = () => {
                             //   "https://ipfs.io/ipfs/" + freelancerData?.ipfsImageHash
                             // }
                             // avatarDisp={true}
+                            displayName={trimAddress(
+                              conversationsData?.freelancer_address
+                            )}
                             type={message.type}
                           />
                         )}
@@ -290,12 +270,15 @@ const DaoProposalDetail = () => {
                             timestamp={message.created_at}
                             // photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
                             // avatarDisp={true}
-                            displayName={message.from}
+
+                            daoFrom={trimAddress(
+                              conversationsData?.client_address
+                            )}
                             type={message.type}
                           />
                         )}
                       </Fragment>
-                    )
+                    );
                   })}
                 </>
               ) : (
@@ -305,26 +288,22 @@ const DaoProposalDetail = () => {
               )}
             </div>
 
-
-
-
-
-
-
-
-
-
-
             <div className="px-4 py-8 lg:px-0">
-              <h1 className="font-bold text-2xl text-gray-200 my-5 mt-16 text-center">DAO Comments</h1>
+              <h1 className="font-bold text-2xl text-gray-200 my-5 mt-16 text-center">
+                DAO Comments
+              </h1>
               {daoMessages && daoMessages.length > 0 ? (
                 daoMessages.map((message) => (
                   <div className="w-full my-2">
                     <div className="h-16 border border-gray-300 text-center flex items-center justify-center shadow-md rounded-lg backdrop-blur-lg">
-                      <p className="font-light text-gray-100 ">{message?.text}</p>
+                      <p className="font-light text-gray-100 ">
+                        {message?.text}
+                      </p>
                     </div>
                     <div className="flex flex-col lg:flex-row justify-between w-full">
-                      <p className="font-light text-xs text-gray-100 p-4">{message?.from}</p>
+                      <p className="font-light text-xs text-gray-100 p-4">
+                        {message?.from}
+                      </p>
                       <p className="font-light text-xs text-blue-800 p-4">
                         <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                           {new Date(message.created_at).toLocaleString()}
@@ -344,20 +323,22 @@ const DaoProposalDetail = () => {
                     className="text-center text-gray-800 font-bold cursor-pointer"
                     onClick={() => getConversations()}
                   >
-                    Please try clicking <span className="text-blue-700">here</span> or refreshing if you don't see the conversation history
+                    Please try clicking{" "}
+                    <span className="text-blue-700">here</span> or refreshing if
+                    you don't see the conversation history
                   </p>
                 </div>
               )}
               <div className="mt-5">
                 <label
                   htmlFor="large-input"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-200 dark:text-white"
                 >
                   Write your thoughts
                 </label>
                 <textarea
                   id="large-input"
-                  className="block w-full p-2 h-32 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full p-2 h-32 text-gray-100 border border-gray-300 rounded-lg bg-gray-900 sm:text-md focus:ring-blue-500 focus:border-blue-500"
                   onChange={(e) => setMessageState(e.target.value)}
                   value={messageState}
                 />
@@ -369,27 +350,27 @@ const DaoProposalDetail = () => {
                 Send
               </button>
             </div>
-
           </>
         ) : (
-            <div class="min-h-[calc(70vh)] flex items-center justify-center flex-col">
-              <img
-                src={"/empty.png"}
-                alt=""
-                class="w-1/2 sm:w-1/4 h-auto sm:h-1/4"
-                style={{
-                  filter: "grayscale(1)",
-                }}
-              />
-              <p
-                class="text-center text-gray-800 font-bold mt-5 sm:mt-10"
-                onClick={() => getConversations()}
-              >
-                Please try clicking{" "}
-                <span class="text-blue-700 cursor-pointer"> here </span> or refreshing if you don't see the conversation history
-              </p>
-            </div>
-          )}
+          <div class="min-h-[calc(70vh)] flex items-center justify-center flex-col">
+            <img
+              src={"/empty.png"}
+              alt=""
+              class="w-1/2 sm:w-1/4 h-auto sm:h-1/4"
+              style={{
+                filter: "grayscale(1)",
+              }}
+            />
+            <p
+              class="text-center text-gray-200 font-bold mt-5 sm:mt-10"
+              onClick={() => getConversations()}
+            >
+              Please try clicking{" "}
+              <span class="text-blue-700 cursor-pointer"> here </span> or
+              refreshing if you don't see the conversation history
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

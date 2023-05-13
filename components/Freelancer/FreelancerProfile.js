@@ -130,7 +130,14 @@ const YourProfile = ({
     : null;
 
   return (
-    <div className="shadow-2xl bg-transparent">
+    <div
+      className="shadow-2xl bg-transparent"
+      style={{
+        zIndex: 10000,
+        background: "rgba(0, 0, 0, 0.5)",
+        color: "#f1f1f1",
+      }}
+    >
       {!router.query.freelancer && (
         <div className="flex justify-center items-center h-32 flex-col">
           {currentFreelancerData?.awsImageLink && (

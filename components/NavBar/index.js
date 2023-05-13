@@ -46,7 +46,7 @@ const NavBar = () => {
   const getNotifications = async () => {
     const notifications = await getNotification();
     setNotifications(notifications);
-  }
+  };
 
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
@@ -126,8 +126,8 @@ const NavBar = () => {
   const colorChangeClass = colorChange
     ? "bg-white text-blue-800"
     : isDarkPage
-      ? "bg-transparent text-blue-800"
-      : "bg-transparent text-black-800";
+    ? "bg-transparent text-blue-800"
+    : "bg-transparent text-black-800";
 
   const borderClass = isDarkPage
     ? colorChange
@@ -238,7 +238,7 @@ const NavBar = () => {
                     >
                       {user?.freelancer_ref ? (
                         router.pathname.includes("gig") ||
-                          router.pathname === "/" ? (
+                        router.pathname === "/" ? (
                           <Link href="/seller">Profile</Link>
                         ) : (
                           <Link href="seller">Switch to Seller</Link>
@@ -255,7 +255,7 @@ const NavBar = () => {
                         borderClass
                       }
                     >
-                      <Link href="/client-profile">Orders</Link>
+                      <Link href="/orders">Orders</Link>
                     </span>
                   </>
                 )}
@@ -325,7 +325,7 @@ const NavBar = () => {
               <>
                 {/* when logged in */}
                 {router.pathname === "/explore" ||
-                  router.pathname === "/gigs" ? (
+                router.pathname === "/gigs" ? (
                   isSellerYet ? (
                     <a href="/seller">
                       <span className="font-light cursor-pointer text-sm mt-1">
@@ -347,12 +347,24 @@ const NavBar = () => {
                         Explore
                       </span>
                     </Link>
-                    <img src={"notification.svg"}
+                    <img
+                      src={"notification.svg"}
                       onClick={() => {
                         getNotifications();
                         toggleNotifications();
-                      }} alt="notification" height={"30px"} width={"30px"} className="cursor-pointer" />
-                    {showNotifications && <NotificationList notifications={notifications} toggleNotifications={toggleNotifications} getNotifications={getNotifications} />}
+                      }}
+                      alt="notification"
+                      height={"30px"}
+                      width={"30px"}
+                      className="cursor-pointer"
+                    />
+                    {showNotifications && (
+                      <NotificationList
+                        notifications={notifications}
+                        toggleNotifications={toggleNotifications}
+                        getNotifications={getNotifications}
+                      />
+                    )}
                     <span
                       onClick={() => signOut()}
                       href="/dao-login"

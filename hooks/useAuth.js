@@ -4,6 +4,7 @@ import { getProfile, getProposalsOfClient } from "../api/auth";
 import jwt_decode from "jwt-decode";
 import { socket, connectSocket } from "../socket";
 import { useRouter } from "next/router";
+
 const {
   contractAddresses,
   Gig_abi,
@@ -19,7 +20,7 @@ import {
   useDisconnect,
   useNetwork,
   useProvider,
-  useSigner
+  useSigner,
 } from "wagmi";
 
 const context = createContext();
@@ -56,7 +57,7 @@ export const AuthProvider = ({ children }) => {
   const [isWrongNetwork, setIsWrongNetwork] = useState(undefined);
   const router = useRouter();
   const { chain } = useNetwork();
-  const { data: signers, isError, isLoading } = useSigner()
+  const { data: signers, isError, isLoading } = useSigner();
 
   console.log("newMessageCount...........................", newMessageCount);
   // console.log(user, "...........................it's working");
@@ -65,6 +66,7 @@ export const AuthProvider = ({ children }) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     setProvider(provider);
     setSigner(provider.getSigner());
+    setIsLoggedIn(true);
     setChainID(window.ethereum.networkVersion);
     if (parseInt(window.ethereum.networkVersion) === 80001) {
       setIsWrongNetwork(false);
@@ -112,7 +114,6 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-
   useEffect(() => {
     const connect = async () => {
       console.log(socket, socket?.connected, user, "auth socket");
@@ -130,9 +131,7 @@ export const AuthProvider = ({ children }) => {
       }
     };
     connect();
-
   }, [user, socket, socket?.connected]);
-
 
   useEffect(() => {
     if (typeof window.ethereum !== "undefined") {
@@ -153,19 +152,25 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      setToken(token);
-      const decodedToken = jwt_decode(token);
-      const user = decodedToken.data.user;
-      setUser(user);
-      setIsLoggedIn(true);
-      // if (!socket) {
-      //   console.log("socketttt---->", user._id);
-      //   connectSocket(user?._id);
-      // }
-      setValues();
+      if (token != null) {
+        const token = localStorage.getItem("token");
+        setToken(token);
+        const decodedToken = jwt_decode(token);
+        const user = decodedToken.data.user;
+        setUser(user);
+        setIsLoggedIn(true);
+        // if (!socket) {
+        //   console.log("socketttt---->", user._id);
+        //   connectSocket(user?._id);
+        // }
+        setValues();
+      } else {
+        setIsLoggedIn(false);
+      }
     }
   }, []);
+
+  // const router = useRouter();
 
   return (
     <Provider
@@ -204,7 +209,7 @@ export const AuthProvider = ({ children }) => {
         searchedGigs,
         setSearchedGigs,
         newMessageCount,
-        setNewMessageCount
+        setNewMessageCount,
       }}
     >
       {children}

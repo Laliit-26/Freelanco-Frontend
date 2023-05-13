@@ -69,10 +69,10 @@ const FreelancerDashboard = () => {
   }, [user]);
   return (
     <div
-      className="bg-cover border-2 h-screen text-white"
+      className="bg-cover border-2 text-white min-h-[100vh]"
       style={{
         backgroundImage: `url('/ff.jpeg')`,
-        height:"100%"
+
         // filter: "blur(8px)",
       }}
     >

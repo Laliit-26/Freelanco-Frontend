@@ -20,29 +20,29 @@ const ProposalsListing = ({ daoProposals }) => {
   const router = useRouter();
 
   return (
-    <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-      <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-        <thead class="bg-gray-50">
+    <div class="overflow-hidden  rounded-lg border border-gray-900 shadow-md m-5 ">
+      <table class="w-full border-collapse text-left bg-gray-900 text-sm text-gray-500">
+        <thead class="bg-gray-900 text-white">
           <tr>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th scope="col" class="px-6 py-4 font-medium text-white">
               Proposal
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th scope="col" class="px-6 py-4 font-medium text-white">
               Status
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th scope="col" class="px-6 py-4 font-medium text-white">
               Made By
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            <th scope="col" class="px-6 py-4 font-medium text-white">
               #
             </th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+            <th scope="col" class="px-6 py-4 font-medium text-white"></th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-100 border-t border-gray-100">
           {daoProposals.map((proposal, idx) => {
             return (
-              <tr class="hover:bg-gray-50">
+              <tr class="hover:opacity-90 cursor-pointer">
                 <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                   <div class="relative h-10">
                     {/* <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span> */}

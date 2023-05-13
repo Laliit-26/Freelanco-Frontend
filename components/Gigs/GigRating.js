@@ -65,11 +65,11 @@ function RatingForm({
   };
 
   return (
-    <form className="bg-white p-4 flex flex-col gap-y-5 items-center shadow-lg w-[30vw]">
+    <form className="bg-gray-900 text-white p-4 flex flex-col gap-y-5 items-center shadow-lg w-[30vw]">
       {successful ? (
         <>
-          <div class="relative p-4 text-center text-black bg-white rounded-lg">
-            <div class="w-12 h-12 rounded-full bg-blue-100 p-2 flex items-center justify-center mx-auto mb-3.5">
+          <div class="relative p-4 text-center  bg-gray-900 text-white rounded-lg">
+            <div class="w-12 h-12 rounded-full bg-blue-900 p-2 flex items-center justify-center mx-auto mb-3.5">
               <svg
                 aria-hidden="true"
                 class="w-8 h-8 text-blue-500"
@@ -85,9 +85,7 @@ function RatingForm({
               </svg>
               <span class="sr-only">Success</span>
             </div>
-            <p class="mb-4 text-lg font-semibold text-gray-900">
-              Successfully added review.
-            </p>
+            <p class="mb-4 text-lg font-semibold">Successfully added review.</p>
             <button
               data-modal-toggle="successModal"
               type="button"
@@ -124,7 +122,7 @@ function RatingForm({
               id="comment"
               value={comment}
               onChange={handleCommentChange}
-              className="w-full border-1 border-blue-400 h-48"
+              className="w-full border-1 border-blue-400 h-48 bg-gray-900 text-white"
             />
           </div>
           <div className="flex justify-between w-full px-10">

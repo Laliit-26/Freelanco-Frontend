@@ -15,7 +15,24 @@ const NavDrawer = ({ conversationsData, setSelected, toggleChatList }) => {
   return (
     <>
       {!conversationsData?.length > 0 ? (
-        <div className="min-h-[calc(70vh)] shadow-2xl bg-black absoluteCenter flex items-center justify-center flex-col">
+        <div
+          className="min-h-[calc(70vh)] shadow-2xl absoluteCenter flex items-center justify-center flex-col"
+          style={
+            // router.pathname === "/" ||
+            // router.pathname === "/dao" ||
+            // router.pathname.includes("/dao-home") ||
+            // router.pathname === "/join" ||
+            // router.pathname == "/settings"
+            //   ?
+            {
+              zIndex: 10000,
+              background: "rgba(0, 0, 0, 0.3)",
+              color: "#f1f1f1",
+            }
+
+            // : {}
+          }
+        >
           <img
             src={"/empty.png"}
             alt=""

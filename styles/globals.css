@@ -112,6 +112,14 @@ SVG Icons - svgicons.sparkk.fr
   }
 }
 
+@media (max-width: 650px) {
+  /* styles for screens with width up to 899 pixels */
+  /* e.g. */
+  .phoneItOut {
+    display: none;
+  }
+}
+
 .absoluteCenter {
   position: absolute;
   left: 0;
