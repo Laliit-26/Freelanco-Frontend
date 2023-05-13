@@ -83,6 +83,10 @@ const Conversation = () => {
           gig_token_id: gigId,
         },
         (data) => {
+          setConversationsData(data);
+          if (data.length > 0) {
+            setSelected(data[0]._id);
+          }
           console.log("strat convo data", data);
           // setConversationsData(data);
         }
